@@ -1,12 +1,13 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-
-import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
+import {AppComponent} from '@dynamic-forms/app/app.component';
+import {AppRoutingModule} from '@dynamic-forms/app/app-routing.module';
+import {AppNavComponent} from './app-nav/app-nav.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AppNavComponent
   ],
   imports: [
     BrowserModule,

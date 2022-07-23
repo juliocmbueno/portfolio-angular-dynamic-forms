@@ -1,4 +1,6 @@
 import {Component} from '@angular/core';
+import {DynamicForm} from '@dynamic-forms/domain/dynamic-form';
+import {DynamicFormElement} from '@dynamic-forms/domain/dynamic-form-element';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,12 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'dynamic-forms';
+
+  form:DynamicForm;
+
+  constructor(){
+    this.form = new DynamicForm('Test DynamicForm');
+    this.form.addElement(new DynamicFormElement('DynamicFormElement One', 'TEXT'))
+  }
+
 }
