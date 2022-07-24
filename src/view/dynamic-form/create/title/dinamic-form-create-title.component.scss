@@ -1,0 +1,19 @@
+
+.btn-edit{
+  position: absolute;
+  top: 5%;
+  right: -20px;
+  padding: .5em;
+  line-height: 1;
+  background-color: transparent;
+  border: 0;
+  display: none;
+}
+
+.container-title > div {
+  position: relative;
+}
+
+.container-title > div:hover .btn-edit{
+  display: block;
+}

@@ -1,0 +1,20 @@
+<div class="row justify-content-center align-items-center container-title">
+  <div class="col-auto" [formGroup]="formGroup">
+
+    <ng-container *ngIf="editable">
+      <input
+        type="text"
+        id="form-title"
+        formControlName="title"
+        class="form-control"
+        [required]="true"
+        [maxLength]="50"
+        (blur)="saveTitle()">
+    </ng-container>
+    <ng-container *ngIf="!editable">
+      <h2 (click)="editTitle()">{{title}}</h2>
+    </ng-container>
+
+    <button type="button" class="btn-edit" (click)="editTitle()"><i class="fa-solid fa-pen-to-square"></i></button>
+  </div>
+</div>

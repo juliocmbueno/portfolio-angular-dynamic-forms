@@ -1,1 +1,6 @@
-<p>dynamic-form-create works!</p>
+<div class="py-5 text-center">
+  <app-dinamic-form-create-title [(title)]="form.title"></app-dinamic-form-create-title>
+  <p class="lead">{{form.description}}</p>
+</div>
+
+<pre>{{form | json}}</pre>
