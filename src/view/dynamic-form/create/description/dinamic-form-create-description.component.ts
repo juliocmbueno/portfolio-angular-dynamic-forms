@@ -32,8 +32,7 @@ export class DinamicFormCreateDescriptionComponent implements OnInit {
 
   public saveDescription():void {
     const description:string = this.formGroup.get('description')?.value;
-
-    this.descriptionChange.emit(description ? description : 'Short description');
+    this.descriptionChange.emit(  description || 'Short description');
     this.editable = false;
   }
 

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
@@ -6,7 +6,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
   templateUrl: './dinamic-form-create-title.component.html',
   styleUrls: ['dinamic-form-create-title.component.scss']
 })
-export class DinamicFormCreateTitleComponent implements OnInit, OnChanges {
+export class DinamicFormCreateTitleComponent implements OnInit {
 
   @Input() title: string | undefined;
   @Output() titleChange: EventEmitter<string> = new EventEmitter<string>();
@@ -28,12 +28,6 @@ export class DinamicFormCreateTitleComponent implements OnInit, OnChanges {
     });
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if(changes['title'] && !this.title){
-      this.title = 'Click to set title'
-    }
-  }
-
   public editTitle():void{
     if(!this.editable){
       this.editable = true;
@@ -46,7 +40,8 @@ export class DinamicFormCreateTitleComponent implements OnInit, OnChanges {
   }
 
   public saveTitle():void{
-    this.titleChange.emit(this.formGroup.get('title')?.value);
+    const title:string = this.formGroup.get('title')?.value;
+    this.titleChange.emit(title || 'Click to set title');
     this.editable = false;
   }
 }

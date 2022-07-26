@@ -20,7 +20,7 @@ export class DynamicFormCreateComponent implements OnInit {
   }
 
   private initForm():void{
-    this.form = new DynamicForm('');
+    this.form = new DynamicForm('Click to set title');
     this.form.description = 'Short description';
   }
 }
