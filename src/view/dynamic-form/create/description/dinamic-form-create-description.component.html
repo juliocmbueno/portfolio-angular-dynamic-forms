@@ -1,1 +1,19 @@
-<p>dinamic-form-create-description works!</p>
+<div class="row justify-content-center align-items-center container-title">
+  <div class="col-11 mb-2" [class.editable]="editable" [formGroup]="formGroup">
+
+    <ng-container *ngIf="editable">
+      <textarea
+        id="form-description"
+        placeholder="Set description"
+        formControlName="description"
+        class="form-control input-title"
+        [maxLength]="500"
+        (keydown.enter)="$event.preventDefault()"
+        (input)="autoSizeTextarea()"
+        (blur)="saveDescription()"></textarea>
+    </ng-container>
+    <ng-container *ngIf="!editable">
+      <p class="lead mb-2 text-break" (click)="editDescription()">{{description}}</p>
+    </ng-container>
+  </div>
+</div>

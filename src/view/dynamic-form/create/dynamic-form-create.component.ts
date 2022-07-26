@@ -8,13 +8,19 @@ import {DynamicForm} from "@dynamic-forms/domain/dynamic-form";
 })
 export class DynamicFormCreateComponent implements OnInit {
 
-  form: DynamicForm = new DynamicForm('New Form');
+  form!: DynamicForm;
 
   constructor(
     private appNavService: AppNavService
   ) { }
 
   ngOnInit(): void {
+    this.initForm();
     this.appNavService.setActivatedIten(AppNavItens['CREATE']);
+  }
+
+  private initForm():void{
+    this.form = new DynamicForm('');
+    this.form.description = 'Short description';
   }
 }
