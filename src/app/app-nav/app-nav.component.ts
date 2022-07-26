@@ -5,13 +5,14 @@ import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-app-nav',
-  templateUrl: './app-nav.component.html'
+  templateUrl: './app-nav.component.html',
+  styleUrls: ['./app-nav.component.scss']
 })
 export class AppNavComponent implements OnInit, OnDestroy {
 
   itens: AppNavIten[] = [];
 
-  activatedItem: AppNavIten = AppNavItens['HOME'];
+  activatedItem?: AppNavIten;
 
   subscriptionActivetedItemChange: Subscription|null = null;
 
