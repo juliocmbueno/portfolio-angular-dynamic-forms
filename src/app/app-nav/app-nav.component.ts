@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {AppNavIten, AppNavItens} from '@dynamic-forms/app/app-nav/app-nav-iten';
+import {AppNavItem, AppNavItems} from '@dynamic-forms/app/app-nav/app-nav-item';
 import {AppNavService} from '@dynamic-forms/app/app-nav/app-nav.service';
 import {Subscription} from 'rxjs';
 
@@ -10,23 +10,24 @@ import {Subscription} from 'rxjs';
 })
 export class AppNavComponent implements OnInit, OnDestroy {
 
-  itens: AppNavIten[] = [];
+  items: AppNavItem[] = [];
 
-  activatedItem?: AppNavIten;
+  activatedItem?: AppNavItem;
+  subscriptionActivetedItemChange!: Subscription;
 
-  subscriptionActivetedItemChange: Subscription|null = null;
+  showGitBtn: boolean = false;
 
   constructor(
     private appNavService: AppNavService
   ) { }
 
   ngOnInit(): void {
-    this.inicializarItens();
+    this.initItems();
     this.subscribeActivatedItemChance();
   }
 
-  private inicializarItens(): void{
-    this.itens = Object.keys(AppNavItens).map(key => AppNavItens[key]);
+  private initItems(): void{
+    this.items = Object.keys(AppNavItems).map(key => AppNavItems[key]);
   }
 
   private subscribeActivatedItemChance(): void{

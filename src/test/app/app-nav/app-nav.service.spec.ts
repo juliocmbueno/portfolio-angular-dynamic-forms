@@ -1,5 +1,5 @@
 import {AppNavService} from '@dynamic-forms/app/app-nav/app-nav.service';
-import {AppNavIten} from '@dynamic-forms/app/app-nav/app-nav-iten';
+import {AppNavItem} from '@dynamic-forms/app/app-nav/app-nav-item';
 
 describe('AppNavService', ()=>{
   it('should create the service', () => {
@@ -10,7 +10,7 @@ describe('AppNavService', ()=>{
   it('should change activatedIten', () => {
     const service = new AppNavService();
 
-    const iten: AppNavIten = {
+    const iten: AppNavItem = {
       label: 'test',
       routerLink: '/'
     };
@@ -25,7 +25,7 @@ describe('AppNavService', ()=>{
     const service = new AppNavService();
     const subscription = service.subscribeActivatedItemChance(iten => itenTemp = iten);
 
-    const item: AppNavIten = {
+    const item: AppNavItem = {
       label: 'test',
       routerLink: '/'
     };

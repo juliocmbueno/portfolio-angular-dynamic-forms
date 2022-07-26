@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AppNavItens} from '@dynamic-forms/app/app-nav/app-nav-iten';
+import {AppNavItems} from '@dynamic-forms/app/app-nav/app-nav-item';
 import {AppNavService} from '@dynamic-forms/app/app-nav/app-nav.service';
 import {DynamicForm} from "@dynamic-forms/domain/dynamic-form";
 
@@ -16,7 +16,7 @@ export class DynamicFormCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
-    this.appNavService.setActivatedIten(AppNavItens['CREATE']);
+    this.appNavService.setActivatedIten(AppNavItems['CREATE']);
   }
 
   private initForm():void{

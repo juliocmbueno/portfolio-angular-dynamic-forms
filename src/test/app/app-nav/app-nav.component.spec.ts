@@ -1,6 +1,6 @@
 import {AppNavComponent} from '@dynamic-forms/app/app-nav/app-nav.component';
 import {AppNavService} from '@dynamic-forms/app/app-nav/app-nav.service';
-import {AppNavItens} from '@dynamic-forms/app/app-nav/app-nav-iten';
+import {AppNavItems} from '@dynamic-forms/app/app-nav/app-nav-item';
 
 describe('AppNavComponent', () => {
   it('should create the component', function () {
@@ -13,8 +13,8 @@ describe('AppNavComponent', () => {
     const component = new AppNavComponent(new AppNavService());
     component.ngOnInit();
 
-    const items = Object.keys(AppNavItens).map(key => AppNavItens[key]);
-    const componentItems = component.itens;
+    const items = Object.keys(AppNavItems).map(key => AppNavItems[key]);
+    const componentItems = component.items;
 
     expect(componentItems.length).toEqual(items.length);
     componentItems.forEach(item => {

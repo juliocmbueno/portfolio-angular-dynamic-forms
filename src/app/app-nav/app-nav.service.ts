@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {AppNavIten} from '@dynamic-forms/app/app-nav/app-nav-iten';
+import {AppNavItem} from '@dynamic-forms/app/app-nav/app-nav-item';
 import {ReplaySubject, Subscription} from 'rxjs';
 
 @Injectable({
@@ -7,22 +7,22 @@ import {ReplaySubject, Subscription} from 'rxjs';
 })
 export class AppNavService {
 
-  activatedIten: AppNavIten|null = null;
+  activatedIten: AppNavItem|null = null;
 
-  private activatedItemObservable:ReplaySubject<AppNavIten> = new ReplaySubject<AppNavIten>(1);
+  private activatedItemObservable:ReplaySubject<AppNavItem> = new ReplaySubject<AppNavItem>(1);
 
   constructor() {}
 
-  public setActivatedIten(iten: AppNavIten){
+  public setActivatedIten(iten: AppNavItem){
     this.activatedIten = iten;
     this.activatedItemObservable.next(iten);
   }
 
-  public getActivatedItem(): AppNavIten|null{
+  public getActivatedItem(): AppNavItem|null{
     return this.activatedIten;
   }
 
-  public subscribeActivatedItemChance(callBack: (iten: AppNavIten) =>{}):Subscription{
-    return this.activatedItemObservable.subscribe((item: AppNavIten) => callBack(item));
+  public subscribeActivatedItemChance(callBack: (iten: AppNavItem) =>{}):Subscription{
+    return this.activatedItemObservable.subscribe((item: AppNavItem) => callBack(item));
   }
 }

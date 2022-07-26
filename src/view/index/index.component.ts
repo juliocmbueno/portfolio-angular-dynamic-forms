@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AppNavService} from '@dynamic-forms/app/app-nav/app-nav.service';
-import {AppNavItens} from '@dynamic-forms/app/app-nav/app-nav-iten';
+import {AppNavItems} from '@dynamic-forms/app/app-nav/app-nav-item';
 
 @Component({
   templateUrl: './index.component.html'
@@ -12,7 +12,7 @@ export class IndexComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.appNavService.setActivatedIten(AppNavItens['HOME']);
+    this.appNavService.setActivatedIten(AppNavItems['HOME']);
   }
 
 }

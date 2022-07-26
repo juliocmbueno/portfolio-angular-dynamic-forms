@@ -1,5 +1,5 @@
 
-export const AppNavItens: {[key: string] : AppNavIten} = {
+export const AppNavItems: {[key: string] : AppNavItem} = {
   HOME: {
     label: 'Home',
     routerLink: '/'
@@ -10,7 +10,7 @@ export const AppNavItens: {[key: string] : AppNavIten} = {
   }
 };
 
-export interface AppNavIten {
+export interface AppNavItem {
   label: string;
   routerLink: string;
 }

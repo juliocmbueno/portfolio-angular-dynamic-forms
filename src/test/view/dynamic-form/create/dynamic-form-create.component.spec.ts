@@ -1,6 +1,6 @@
 import {DynamicFormCreateComponent} from '@dynamic-forms/view/dynamic-form/create/dynamic-form-create.component';
 import {AppNavService} from '@dynamic-forms/app/app-nav/app-nav.service';
-import {AppNavItens} from '@dynamic-forms/app/app-nav/app-nav-iten';
+import {AppNavItems} from '@dynamic-forms/app/app-nav/app-nav-item';
 
 describe('DynamicFormCreateComponent', () => {
   it('should create the IndexComponent', () => {
@@ -13,6 +13,6 @@ describe('DynamicFormCreateComponent', () => {
 
     new DynamicFormCreateComponent(appNavService).ngOnInit();
 
-    expect(appNavService.getActivatedItem()).toEqual(AppNavItens['CREATE']);
+    expect(appNavService.getActivatedItem()).toEqual(AppNavItems['CREATE']);
   });
 });
