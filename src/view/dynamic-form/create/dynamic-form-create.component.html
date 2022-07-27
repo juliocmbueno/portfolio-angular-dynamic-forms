@@ -1,6 +1,19 @@
 <div class="py-5 text-center">
   <app-dinamic-form-create-title [(title)]="form.title"></app-dinamic-form-create-title>
   <app-dinamic-form-create-description [(description)]="form.description"></app-dinamic-form-create-description>
+
+  <div class="pb-5 pt-4">
+    <app-divider width="80%"></app-divider>
+  </div>
+
+  <div class="row justify-content-between container-btn-add-element" [class.has-element]="form.elements.length">
+    <div class="col">
+      <button type="button" title="Add Element" class="circular-icon-button primary" (click)="addNewElement()">
+        <i class="fa-solid fa-plus"></i>
+      </button>
+    </div>
+  </div>
+
 </div>
 
 <pre>{{form | json}}</pre>

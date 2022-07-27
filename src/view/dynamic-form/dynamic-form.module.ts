@@ -5,6 +5,7 @@ import {DynamicFormRoutingModule} from '@dynamic-forms/view/dynamic-form/dynamic
 import {DinamicFormCreateTitleComponent} from './create/title/dinamic-form-create-title.component';
 import {DinamicFormCreateDescriptionComponent} from './create/description/dinamic-form-create-description.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {DividerModule} from "../../components/divider/divider.module";
 
 @NgModule({
   declarations: [
@@ -12,10 +13,11 @@ import {ReactiveFormsModule} from "@angular/forms";
     DinamicFormCreateTitleComponent,
     DinamicFormCreateDescriptionComponent
   ],
-  imports: [
-    CommonModule,
-    DynamicFormRoutingModule,
-    ReactiveFormsModule
-  ]
+    imports: [
+        CommonModule,
+        DynamicFormRoutingModule,
+        ReactiveFormsModule,
+        DividerModule
+    ]
 })
 export class DynamicFormModule { }
