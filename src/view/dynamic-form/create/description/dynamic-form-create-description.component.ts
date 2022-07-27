@@ -4,11 +4,11 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 declare var autosize:any;
 
 @Component({
-  selector: 'app-dinamic-form-create-description',
-  templateUrl: './dinamic-form-create-description.component.html',
-  styleUrls: ['./dinamic-form-create-description.component.scss']
+  selector: 'app-dynamic-form-create-description',
+  templateUrl: './dynamic-form-create-description.component.html',
+  styleUrls: ['./dynamic-form-create-description.component.scss']
 })
-export class DinamicFormCreateDescriptionComponent implements OnInit {
+export class DynamicFormCreateDescriptionComponent implements OnInit {
 
   @Input() description?: string;
   @Output() descriptionChange: EventEmitter<string> = new EventEmitter<string>();

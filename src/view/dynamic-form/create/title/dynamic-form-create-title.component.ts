@@ -2,11 +2,11 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
-  selector: 'app-dinamic-form-create-title',
-  templateUrl: './dinamic-form-create-title.component.html',
-  styleUrls: ['dinamic-form-create-title.component.scss']
+  selector: 'app-dynamic-form-create-title',
+  templateUrl: './dynamic-form-create-title.component.html',
+  styleUrls: ['dynamic-form-create-title.component.scss']
 })
-export class DinamicFormCreateTitleComponent implements OnInit {
+export class DynamicFormCreateTitleComponent implements OnInit {
 
   @Input() title: string | undefined;
   @Output() titleChange: EventEmitter<string> = new EventEmitter<string>();
