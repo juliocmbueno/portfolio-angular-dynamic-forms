@@ -1,0 +1,32 @@
+
+.container-material-input{
+  position: relative;
+}
+
+.container-material-input::after {
+  content: "";
+  background-color: black;
+  width: 98%;
+  height: 2px;
+  left: .7rem;
+  position: absolute;
+  transform: rotatey(90deg);
+}
+
+.container-material-input.editable::after{
+  transform: rotatey(0deg);
+  transition: transform .3s ease-in-out;
+}
+
+.container-material-input{
+  input, textarea{
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0.5rem;
+    padding: 0;
+
+    &:focus{
+      box-shadow: none;
+    }
+  }
+}

@@ -1,29 +1,5 @@
 
-.container-title > div {
-  position: relative;
-}
-
-.container-title > div::after {
-  content: "";
-  background-color: black;
-  width: 98%;
-  height: 2px;
-  left: .7rem;
-  position: absolute;
-  transform: rotatey(90deg);
-}
-.container-title > div.editable::after{
-  transform: rotatey(0deg);
-  transition: transform .3s ease-in-out;
-}
-
-
 #form-description{
-  border: 0;
-  border-radius: 0;
-  margin-bottom: 0.5rem;
-  padding: 0;
-  box-shadow: none;
   font-size: 1.25rem;
   font-weight: 300;
   min-height: 30px;
