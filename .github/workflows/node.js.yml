@@ -1,12 +1,12 @@
-on:
-  pull_request:
-  push:
-jobs:
-  build-test:
-    name: Build & Test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: npm ci
-      - run: npm test
-
+#on:
+#  pull_request:
+#  push:
+#jobs:
+#  build-test:
+#    name: Build & Test
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v2
+#      - run: npm ci
+#      - run: npm test
+#
