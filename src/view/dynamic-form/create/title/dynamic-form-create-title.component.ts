@@ -36,7 +36,7 @@ export class DynamicFormCreateTitleComponent implements OnInit {
     setTimeout(() => {
       const input: HTMLInputElement|null = document.querySelector<HTMLInputElement>('#form-title');
       input?.focus();
-    }, 100);
+    }, 1);
   }
 
   public saveTitle():void{

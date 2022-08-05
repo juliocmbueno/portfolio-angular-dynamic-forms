@@ -41,4 +41,18 @@ describe('AppNavComponent', () => {
     component.ngOnDestroy();
     expect(component?.subscriptionActivetedItemChange?.closed).toBeTrue();
   });
+
+  it('should activatedItem chanced after appNavService.activatedItem', function () {
+    const appNavService = new AppNavService();
+    const component = new AppNavComponent(appNavService);
+    component.ngOnInit();
+
+    expect(component.activatedItem).toBeFalsy();
+
+    appNavService.setActivatedIten(AppNavItems['HOME']);
+
+    expect(component.activatedItem).toBe(AppNavItems['HOME']);
+
+    component.ngOnDestroy();
+  });
 });
