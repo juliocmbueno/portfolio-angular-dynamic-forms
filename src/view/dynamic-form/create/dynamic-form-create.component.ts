@@ -27,6 +27,6 @@ export class DynamicFormCreateComponent implements OnInit {
   }
 
   public addNewElement():void{
-    this.form.addElement(new DynamicFormElement('Test', "TEXT"));
+    this.form.addElement(new DynamicFormElement('', "TEXT"));
   }
 }

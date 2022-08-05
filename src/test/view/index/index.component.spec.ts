@@ -8,7 +8,7 @@ describe('IndexComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should AppNavItens.HOME Activated after ngOnInit', () => {
+  it('should AppNavItems.HOME Activated after ngOnInit', () => {
     const appNavService = new AppNavService();
 
     new IndexComponent(appNavService).ngOnInit();
