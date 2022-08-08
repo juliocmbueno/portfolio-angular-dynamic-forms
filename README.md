@@ -1,3 +1,5 @@
+![Tests](https://github.com/juliocmbueno/portfolio-angular-dynamic-forms/actions/workflows/node.js.yml/badge.svg)
+
 # DynamicForms
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.0.
