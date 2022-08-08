@@ -1,4 +1,4 @@
-![Tests](https://github.com/juliocmbueno/portfolio-angular-dynamic-forms/actions/workflows/node.js.yml/badge.svg)
+![GitHub CI](https://github.com/juliocmbueno/portfolio-angular-dynamic-forms/actions/workflows/node.js.yml/badge.svg)
 
 # DynamicForms
 
