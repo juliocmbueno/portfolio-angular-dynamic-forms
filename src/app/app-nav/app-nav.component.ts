@@ -15,7 +15,7 @@ export class AppNavComponent implements OnInit, OnDestroy {
   activatedItem?: AppNavItem;
   subscriptionActivetedItemChange!: Subscription;
 
-  showGitBtn: boolean = false;
+  showGitBtn: boolean = true;
 
   constructor(
     private appNavService: AppNavService
