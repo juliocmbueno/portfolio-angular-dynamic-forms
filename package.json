@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "test:prod": "ng test --browsers=ChromeHeadless --watch=false --code-coverage",
-    "test-coverage": "ng test --code-coverage=true"
+    "test:coverage": "ng test --code-coverage=true"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +23,8 @@
     "@fortawesome/fontawesome-free": "^6.1.1",
     "autosize": "^5.0.1",
     "bootstrap": "^5.2.0",
+    "primeicons": "^5.0.0",
+    "primeng": "^14.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

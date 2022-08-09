@@ -4,20 +4,27 @@ import {DynamicFormCreateComponent} from './create/dynamic-form-create.component
 import {DynamicFormRoutingModule} from '@dynamic-forms/view/dynamic-form/dynamic-form-routing.module';
 import {DynamicFormCreateTitleComponent} from './create/title/dynamic-form-create-title.component';
 import {DynamicFormCreateDescriptionComponent} from './create/description/dynamic-form-create-description.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {DividerModule} from "@dynamic-forms/components/divider/divider.module";
+import {DynamicFormCreateElementsComponent} from './create/elements/dynamic-form-create-elements.component';
+import {DropdownModule} from "primeng/dropdown";
+import {InplaceModule} from "primeng/inplace";
 
 @NgModule({
   declarations: [
     DynamicFormCreateComponent,
     DynamicFormCreateTitleComponent,
-    DynamicFormCreateDescriptionComponent
+    DynamicFormCreateDescriptionComponent,
+    DynamicFormCreateElementsComponent
   ],
   imports: [
     CommonModule,
     DynamicFormRoutingModule,
     ReactiveFormsModule,
-    DividerModule
+    DividerModule,
+    DropdownModule,
+    FormsModule,
+    InplaceModule
   ]
 })
 export class DynamicFormModule { }

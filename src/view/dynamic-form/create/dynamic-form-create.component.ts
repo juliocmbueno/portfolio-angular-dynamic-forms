@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {AppNavItems} from '@dynamic-forms/app/app-nav/app-nav-item';
 import {AppNavService} from '@dynamic-forms/app/app-nav/app-nav.service';
 import {DynamicForm} from "@dynamic-forms/domain/dynamic-form";
-import {DynamicFormElement} from "@dynamic-forms/domain/dynamic-form-element";
+import {DynamicFormElement, DynamicFormTypes} from "@dynamic-forms/domain/dynamic-form-element";
+import {DynamicFormCreateElementsComponent} from "@dynamic-forms/view/dynamic-form/create/elements/dynamic-form-create-elements.component";
 
 @Component({
   templateUrl: './dynamic-form-create.component.html',
@@ -11,6 +12,8 @@ import {DynamicFormElement} from "@dynamic-forms/domain/dynamic-form-element";
 export class DynamicFormCreateComponent implements OnInit {
 
   form!: DynamicForm;
+
+  @ViewChild('createElementsComponent', {static: false}) createElementsComponent!: DynamicFormCreateElementsComponent;
 
   constructor(
     private appNavService: AppNavService
@@ -27,6 +30,8 @@ export class DynamicFormCreateComponent implements OnInit {
   }
 
   public addNewElement():void{
-    this.form.addElement(new DynamicFormElement('', "TEXT"));
+    const element = new DynamicFormElement('', DynamicFormTypes['TEXT']);
+    this.form.addElement(element);
+    this.createElementsComponent.edit(element);
   }
 }

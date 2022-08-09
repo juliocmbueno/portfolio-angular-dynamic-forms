@@ -2,6 +2,7 @@ import {DynamicFormCreateComponent} from '@dynamic-forms/view/dynamic-form/creat
 import {AppNavService} from '@dynamic-forms/app/app-nav/app-nav.service';
 import {AppNavItems} from '@dynamic-forms/app/app-nav/app-nav-item';
 import {DynamicForm} from "@dynamic-forms/domain/dynamic-form";
+import {DynamicFormCreateElementsComponent} from "@dynamic-forms/view/dynamic-form/create/elements/dynamic-form-create-elements.component";
 
 describe('DynamicFormCreateComponent', () => {
   it('should create the DynamicFormCreateComponent', () => {
@@ -32,8 +33,13 @@ describe('DynamicFormCreateComponent', () => {
 
   it('should add new element on form', () => {
     const appNavService = new AppNavService();
+    const createElementsComponent = new DynamicFormCreateElementsComponent();
 
     const component = new DynamicFormCreateComponent(appNavService);
+    component.createElementsComponent = createElementsComponent;
+
+    spyOn(component.createElementsComponent, 'edit');
+
     component.ngOnInit();
     component.addNewElement();
 
@@ -42,6 +48,7 @@ describe('DynamicFormCreateComponent', () => {
 
     const element = form.elements[0];
     expect(element.label).toEqual('');
-    expect(element.type).toEqual('TEXT');
+    expect(element.type?.elementType).toEqual('TEXT');
+    expect(component.createElementsComponent.edit).toHaveBeenCalledWith(element);
   });
 });

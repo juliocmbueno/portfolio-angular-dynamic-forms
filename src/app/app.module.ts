@@ -3,6 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from '@dynamic-forms/app/app.component';
 import {AppRoutingModule} from '@dynamic-forms/app/app-routing.module';
 import {AppNavComponent} from './app-nav/app-nav.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import {AppNavComponent} from './app-nav/app-nav.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

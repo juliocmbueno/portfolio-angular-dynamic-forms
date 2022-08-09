@@ -1,4 +1,6 @@
 
+export type DynamicFormElementTypeValue = 'TEXT'|'TEXTAREA';
+
 export class DynamicFormElement {
   label: string | undefined;
   type: DynamicFormElementType | undefined;
@@ -9,4 +11,21 @@ export class DynamicFormElement {
   }
 }
 
-export type DynamicFormElementType = 'TEXT';
+export interface DynamicFormElementType {
+  label: string,
+  elementType: DynamicFormElementTypeValue,
+  icon: string
+}
+
+export const DynamicFormTypes: {[key:string]:DynamicFormElementType} = {
+  'TEXT': {
+    label: 'Short Text',
+    elementType: 'TEXT',
+    icon: 'fa-solid fa-grip-lines'
+  },
+  'TEXTAREA': {
+    label: 'Long Text',
+    elementType: 'TEXTAREA',
+    icon: 'fa-solid fa-align-left'
+  }
+}

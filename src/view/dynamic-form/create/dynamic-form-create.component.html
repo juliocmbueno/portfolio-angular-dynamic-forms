@@ -1,13 +1,15 @@
-<div class="py-5 text-center">
+<div class="py-5">
   <app-dynamic-form-create-title [(title)]="form.title"></app-dynamic-form-create-title>
   <app-dynamic-form-create-description [(description)]="form.description"></app-dynamic-form-create-description>
 
-  <div class="pb-5 pt-4">
+  <div class="pb-4 pt-4">
     <app-divider width="80%"></app-divider>
   </div>
 
-  <div class="row justify-content-between container-btn-add-element" [class.has-element]="form.elements.length">
-    <div class="col">
+  <app-dynamic-form-create-elements #createElementsComponent [elements]="form.elements"></app-dynamic-form-create-elements>
+
+  <div class="row justify-content-center container-btn-add-element" [class.has-element]="form.elements.length">
+    <div class="col-auto">
       <button type="button" title="Add Element" class="circular-icon-button primary" (click)="addNewElement()">
         <i class="fa-solid fa-plus"></i>
       </button>
@@ -15,5 +17,3 @@
   </div>
 
 </div>
-
-<pre>{{form | json}}</pre>

@@ -1,5 +1,5 @@
 import {DynamicForm} from '@dynamic-forms/domain/dynamic-form';
-import {DynamicFormElement} from '@dynamic-forms/domain/dynamic-form-element';
+import {DynamicFormElement, DynamicFormTypes} from '@dynamic-forms/domain/dynamic-form-element';
 
 describe('DynamicForm', () => {
   it('should create', function () {
@@ -12,7 +12,7 @@ describe('DynamicForm', () => {
 
   it('should add some element', function () {
     const form = new DynamicForm('Title');
-    form.addElement(new DynamicFormElement('Input Text', 'TEXT'));
+    form.addElement(new DynamicFormElement('Input Text', DynamicFormTypes['TEXT']));
 
     expect(form.elements.length).toBe(1);
   });
