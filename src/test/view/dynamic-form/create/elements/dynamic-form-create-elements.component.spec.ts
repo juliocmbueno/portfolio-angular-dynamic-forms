@@ -30,4 +30,23 @@ describe('DynamicFormCreateElementsComponent', () => {
 
     expect(component.editableElement).toBe(element);
   });
+
+  it('should not remove if not equals to editableElement', () => {
+    const element = new DynamicFormElement('Field', DynamicFormTypes['TEXT']);
+    component.elements.push(element);
+
+    component.remove(element);
+
+    expect(component.elements.includes(element)).toBeTrue();
+  });
+
+  it('should remove element', () => {
+    const element = new DynamicFormElement('Field', DynamicFormTypes['TEXT']);
+    component.elements.push(element);
+
+    component.edit(element);
+    component.remove(element);
+
+    expect(component.elements.includes(element)).toBeFalse();
+  });
 });
