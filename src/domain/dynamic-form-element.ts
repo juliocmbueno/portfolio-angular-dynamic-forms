@@ -3,9 +3,11 @@ export type DynamicFormElementTypeValue = 'TEXT'|'TEXTAREA';
 
 export class DynamicFormElement {
   label: string | undefined;
+  required: boolean;
   type: DynamicFormElementType | undefined;
 
   constructor(label: string, type: DynamicFormElementType){
+    this.required = false;
     this.label = label;
     this.type = type;
   }

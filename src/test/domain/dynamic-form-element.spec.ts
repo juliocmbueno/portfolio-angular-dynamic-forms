@@ -7,6 +7,7 @@ describe('DynamicFormElement', () => {
     expect(input).toBeTruthy();
     expect(input.label).toBe('Name');
     expect(input.type?.elementType).toBe('TEXT');
+    expect(input.required).toBeFalse();
   });
 });
 

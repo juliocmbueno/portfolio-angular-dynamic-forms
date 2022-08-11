@@ -31,22 +31,61 @@ describe('DynamicFormCreateElementsComponent', () => {
     expect(component.editableElement).toBe(element);
   });
 
-  it('should not remove if not equals to editableElement', () => {
-    const element = new DynamicFormElement('Field', DynamicFormTypes['TEXT']);
-    component.elements.push(element);
+  it('should edit next element if exists after goNextOnRemoveButtonTab', () => {
+    const previousElement = new DynamicFormElement('Previous', DynamicFormTypes['TEXT']);
+    const nextElement = new DynamicFormElement('Next', DynamicFormTypes['TEXT']);
 
-    component.remove(element);
+    component.elements.push(previousElement);
+    component.elements.push(nextElement);
 
-    expect(component.elements.includes(element)).toBeTrue();
+    component.edit(previousElement);
+
+    component.goNextOnRemoveButtonTab(new Event(''));
+
+    expect(component.editableElement).toBe(nextElement);
+  });
+
+  it('should create new element if next element not exists after execute goNextOnRemoveButtonTab', () => {
+    const previousElement = new DynamicFormElement('Previous', DynamicFormTypes['TEXT']);
+    component.elements.push(previousElement);
+
+    component.edit(previousElement);
+
+    component.goNextOnRemoveButtonTab(new Event(''));
+
+    expect(component.elements.length).toEqual(2);
   });
 
   it('should remove element', () => {
     const element = new DynamicFormElement('Field', DynamicFormTypes['TEXT']);
     component.elements.push(element);
 
-    component.edit(element);
     component.remove(element);
 
     expect(component.elements.includes(element)).toBeFalse();
+  });
+
+  it('should edit next element if exists after delete', () => {
+    const previousElement = new DynamicFormElement('Previous', DynamicFormTypes['TEXT']);
+    const nextElement = new DynamicFormElement('Next', DynamicFormTypes['TEXT']);
+
+    component.elements.push(previousElement);
+    component.elements.push(nextElement);
+
+    component.remove(previousElement);
+
+    expect(component.editableElement).toBe(nextElement);
+  });
+
+  it('should edit previous element if next element not exists but previous yes', () => {
+    const previousElement = new DynamicFormElement('Previous', DynamicFormTypes['TEXT']);
+    const nextElement = new DynamicFormElement('Next', DynamicFormTypes['TEXT']);
+
+    component.elements.push(previousElement);
+    component.elements.push(nextElement);
+
+    component.remove(nextElement);
+
+    expect(component.editableElement).toBe(previousElement);
   });
 });

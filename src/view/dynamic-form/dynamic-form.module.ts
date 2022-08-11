@@ -9,6 +9,8 @@ import {DividerModule} from "@dynamic-forms/components/divider/divider.module";
 import {DynamicFormCreateElementsComponent} from './create/elements/dynamic-form-create-elements.component';
 import {DropdownModule} from "primeng/dropdown";
 import {InplaceModule} from "primeng/inplace";
+import {TooltipModule} from "primeng/tooltip";
+import {InputSwitchModule} from "primeng/inputswitch";
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import {InplaceModule} from "primeng/inplace";
     DividerModule,
     DropdownModule,
     FormsModule,
-    InplaceModule
+    InplaceModule,
+    TooltipModule,
+    InputSwitchModule
   ]
 })
 export class DynamicFormModule { }

@@ -10,7 +10,7 @@ export class DynamicFormCreateElementsComponent implements OnInit {
 
   @Input() elements: DynamicFormElement[] = [];
 
-  editableElement?: DynamicFormElement;
+  editableElement!: DynamicFormElement;
   types: DynamicFormElementType[] = [];
 
   constructor() {}
@@ -23,14 +23,51 @@ export class DynamicFormCreateElementsComponent implements OnInit {
     this.types = Object.keys(DynamicFormTypes).map(key => DynamicFormTypes[key]);
   }
 
+  public goNextOnRemoveButtonTab(event: Event):void{
+    event.preventDefault();
+
+    const nextElement = this.nextElementOf(this.editableElement);
+    if(nextElement){
+      this.edit(nextElement);
+
+    } else {
+      this.addNewElement();
+
+    }
+  }
+
+  private addNewElement():void{
+    const element = new DynamicFormElement('', DynamicFormTypes['TEXT']);
+    this.elements.push(element);
+    this.edit(element);
+  }
+
+  private nextElementOf(element: DynamicFormElement): DynamicFormElement{
+    const index = this.elements.indexOf(element);
+    return this.elements[index+1];
+  }
+
+  private previousElementOf(element: DynamicFormElement): DynamicFormElement{
+    const index = this.elements.indexOf(element);
+    return this.elements[index-1];
+  }
+
   public edit(element: DynamicFormElement): void{
     this.editableElement = element;
+
+    setTimeout(() => {
+      const index = this.elements.indexOf(element);
+      document.querySelector<HTMLElement>(`#config-element-title-${index}`)?.focus();
+    }, 10);
   }
 
   public remove(element: DynamicFormElement): void{
-    if(this.editableElement === element){
-      const index = this.elements.indexOf(element);
-      this.elements.splice(index, 1);
+    const closer = this.nextElementOf(element) || this.previousElementOf(element);
+    if(closer){
+      this.edit(closer);
     }
+
+    const index = this.elements.indexOf(element);
+    this.elements.splice(index, 1);
   }
 }

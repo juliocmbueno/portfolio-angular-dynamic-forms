@@ -1,0 +1,20 @@
+
+p-inputswitch{
+  height: 1.75rem;
+}
+
+.p-inputswitch.p-inputswitch-checked {
+  &.light{
+    .p-inputswitch-slider{
+      background: #FFF;
+
+      &:hover{
+        background: #eeeeee;
+      }
+
+      &::before{
+        background: $jb-primary;
+      }
+    }
+  }
+}
