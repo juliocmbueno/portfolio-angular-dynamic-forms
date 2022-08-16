@@ -2,6 +2,7 @@ import {TestBed} from '@angular/core/testing';
 
 import {DynamicFormCreateElementsComponent} from '@dynamic-forms/view/dynamic-form/create/elements/dynamic-form-create-elements.component';
 import {DynamicFormElement, DynamicFormTypes} from "@dynamic-forms/domain/dynamic-form-element";
+import {DynamicForm} from "@dynamic-forms/domain/dynamic-form";
 
 describe('DynamicFormCreateElementsComponent', () => {
   let component: DynamicFormCreateElementsComponent;
@@ -13,6 +14,7 @@ describe('DynamicFormCreateElementsComponent', () => {
 
     const fixture = TestBed.createComponent(DynamicFormCreateElementsComponent);
     component = fixture.componentInstance;
+    component.form = new DynamicForm('DynamicFormCreateElementsComponent');
   });
 
   it('should create', () => {
@@ -35,8 +37,8 @@ describe('DynamicFormCreateElementsComponent', () => {
     const previousElement = new DynamicFormElement('Previous', DynamicFormTypes['TEXT']);
     const nextElement = new DynamicFormElement('Next', DynamicFormTypes['TEXT']);
 
-    component.elements.push(previousElement);
-    component.elements.push(nextElement);
+    component.form.addElement(previousElement);
+    component.form.addElement(nextElement);
 
     component.edit(previousElement);
 
@@ -47,30 +49,30 @@ describe('DynamicFormCreateElementsComponent', () => {
 
   it('should create new element if next element not exists after execute goNextOnRemoveButtonTab', () => {
     const previousElement = new DynamicFormElement('Previous', DynamicFormTypes['TEXT']);
-    component.elements.push(previousElement);
+    component.form.addElement(previousElement);
 
     component.edit(previousElement);
 
     component.goNextOnRemoveButtonTab(new Event(''));
 
-    expect(component.elements.length).toEqual(2);
+    expect(component.form.elements.length).toEqual(2);
   });
 
   it('should remove element', () => {
     const element = new DynamicFormElement('Field', DynamicFormTypes['TEXT']);
-    component.elements.push(element);
+    component.form.addElement(element);
 
     component.remove(element);
 
-    expect(component.elements.includes(element)).toBeFalse();
+    expect(component.form.elements.includes(element)).toBeFalse();
   });
 
   it('should edit next element if exists after delete', () => {
     const previousElement = new DynamicFormElement('Previous', DynamicFormTypes['TEXT']);
     const nextElement = new DynamicFormElement('Next', DynamicFormTypes['TEXT']);
 
-    component.elements.push(previousElement);
-    component.elements.push(nextElement);
+    component.form.addElement(previousElement);
+    component.form.addElement(nextElement);
 
     component.remove(previousElement);
 
@@ -81,8 +83,8 @@ describe('DynamicFormCreateElementsComponent', () => {
     const previousElement = new DynamicFormElement('Previous', DynamicFormTypes['TEXT']);
     const nextElement = new DynamicFormElement('Next', DynamicFormTypes['TEXT']);
 
-    component.elements.push(previousElement);
-    component.elements.push(nextElement);
+    component.form.addElement(previousElement);
+    component.form.addElement(nextElement);
 
     component.remove(nextElement);
 

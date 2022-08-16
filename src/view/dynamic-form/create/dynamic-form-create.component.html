@@ -6,7 +6,7 @@
     <app-divider width="80%"></app-divider>
   </div>
 
-  <app-dynamic-form-create-elements #createElementsComponent [elements]="form.elements"></app-dynamic-form-create-elements>
+  <app-dynamic-form-create-elements #createElementsComponent [form]="form"></app-dynamic-form-create-elements>
 
   <div class="row justify-content-center container-btn-add-element" [class.has-element]="form.elements.length">
     <div class="col-auto">

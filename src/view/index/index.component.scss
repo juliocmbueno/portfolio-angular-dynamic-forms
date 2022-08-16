@@ -1,0 +1,47 @@
+
+.technology-img{
+  background-color: #dcdcdc;
+  border-radius: 1rem;
+
+  .primeng{
+    padding: .5rem;
+  }
+
+  .bootstrap{
+    padding: .4rem;
+  }
+
+  .sass{
+    padding: .5rem;
+  }
+
+  .typescript{
+    padding: .6rem;
+  }
+}
+
+.technology-description{
+  height: 75px;
+  overflow: hidden;
+}
+
+.see-more-link{
+  position: relative;
+
+  &::after {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    content: "\f105";
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    transform: translate(12px, 3px);
+    transition: 0.2s transform;
+    padding-left: 14px;
+  }
+}
+
+.see-more-link:hover::after {
+  transform: translate(22px, 3px);
+}
+

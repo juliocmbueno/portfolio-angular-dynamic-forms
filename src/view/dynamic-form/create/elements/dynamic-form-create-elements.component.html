@@ -4,7 +4,7 @@
     [ngClass]="{'editable shadow-sm': editableElement === element}"
     (click)="edit(element)"
     (keyup.delete)="remove(element)"
-    *ngFor="let element of elements; let index = index">
+    *ngFor="let element of form.elements; let index = index">
     <div class="row config justify-content-end align-items-center jb-bg-primary">
       <div class="col-12 col-md-auto pb-1 pb-md-0">
         <input type="text" class="form-control" id="{{'config-element-title-'+index}}" placeholder="Element Title" [(ngModel)]="element.label">

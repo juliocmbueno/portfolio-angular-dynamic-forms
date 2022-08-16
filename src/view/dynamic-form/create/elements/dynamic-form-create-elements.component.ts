@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {DynamicFormElement, DynamicFormElementType, DynamicFormTypes} from "@dynamic-forms/domain/dynamic-form-element";
+import {DynamicForm} from "@dynamic-forms/domain/dynamic-form";
 
 @Component({
   selector: 'app-dynamic-form-create-elements',
@@ -8,7 +9,7 @@ import {DynamicFormElement, DynamicFormElementType, DynamicFormTypes} from "@dyn
 })
 export class DynamicFormCreateElementsComponent implements OnInit {
 
-  @Input() elements: DynamicFormElement[] = [];
+  @Input() form!: DynamicForm;
 
   editableElement!: DynamicFormElement;
   types: DynamicFormElementType[] = [];
@@ -26,7 +27,7 @@ export class DynamicFormCreateElementsComponent implements OnInit {
   public goNextOnRemoveButtonTab(event: Event):void{
     event.preventDefault();
 
-    const nextElement = this.nextElementOf(this.editableElement);
+    const nextElement = this.form.nextElementOf(this.editableElement);
     if(nextElement){
       this.edit(nextElement);
 
@@ -38,36 +39,27 @@ export class DynamicFormCreateElementsComponent implements OnInit {
 
   private addNewElement():void{
     const element = new DynamicFormElement('', DynamicFormTypes['TEXT']);
-    this.elements.push(element);
+    this.form.addElement(element);
     this.edit(element);
   }
 
-  private nextElementOf(element: DynamicFormElement): DynamicFormElement{
-    const index = this.elements.indexOf(element);
-    return this.elements[index+1];
-  }
-
-  private previousElementOf(element: DynamicFormElement): DynamicFormElement{
-    const index = this.elements.indexOf(element);
-    return this.elements[index-1];
-  }
-
   public edit(element: DynamicFormElement): void{
-    this.editableElement = element;
+    if(this.editableElement != element){
+      this.editableElement = element;
 
-    setTimeout(() => {
-      const index = this.elements.indexOf(element);
-      document.querySelector<HTMLElement>(`#config-element-title-${index}`)?.focus();
-    }, 10);
+      setTimeout(() => {
+        const index = this.form.indexOf(element);
+        document.querySelector<HTMLElement>(`#config-element-title-${index}`)?.focus();
+      }, 10);
+    }
   }
 
   public remove(element: DynamicFormElement): void{
-    const closer = this.nextElementOf(element) || this.previousElementOf(element);
+    const closer = this.form.nextElementOf(element) || this.form.previousElementOf(element);
     if(closer){
       this.edit(closer);
     }
 
-    const index = this.elements.indexOf(element);
-    this.elements.splice(index, 1);
+    this.form.removeElement(element);
   }
 }

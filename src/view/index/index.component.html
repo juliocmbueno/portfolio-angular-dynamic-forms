@@ -1,1 +1,15 @@
-<p>index works!</p>
+<div class="container px-4 py-5">
+  <h2 class="pb-2 border-bottom">Used Technologies</h2>
+  <div class="technology-container row g-4 py-5 row-cols-1 row-cols-lg-3">
+    <div class="col technology" *ngFor="let technology of technologies">
+      <div class="technology-img d-inline-flex align-items-center justify-content-center fs-2 mb-3">
+        <img [src]="technology.img" [ngClass]="technology.styleClassImg" alt="" width="60" height="60" class="d-inline-block align-text-top">
+      </div>
+      <h2>{{technology.title}}</h2>
+      <p class="technology-description">{{technology.description}}</p>
+      <a [href]="technology.link" target="_blank" class="see-more-link d-inline-flex align-items-center">
+        See more
+      </a>
+    </div>
+  </div>
+</div>
