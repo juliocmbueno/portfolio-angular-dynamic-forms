@@ -1,0 +1,20 @@
+
+.arrow-link{
+  position: relative;
+
+  &::after {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    content: "\f105";
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    transform: translate(12px, 3px);
+    transition: 0.2s transform;
+    padding-left: 14px;
+  }
+}
+
+.arrow-link:hover::after {
+  transform: translate(22px, 3px);
+}
