@@ -21,41 +21,11 @@ describe('DynamicFormCreateElementsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should types.length greater than 0', () => {
-    component.ngOnInit();
-    expect(component.types.length).toBeGreaterThan(0);
-  });
-
   it('should edit element', () => {
     const element = new DynamicFormElement('Field', DynamicFormTypes['TEXT']);
     component.edit(element);
 
     expect(component.editableElement).toBe(element);
-  });
-
-  it('should edit next element if exists after goNextOnRemoveButtonTab', () => {
-    const previousElement = new DynamicFormElement('Previous', DynamicFormTypes['TEXT']);
-    const nextElement = new DynamicFormElement('Next', DynamicFormTypes['TEXT']);
-
-    component.form.addElement(previousElement);
-    component.form.addElement(nextElement);
-
-    component.edit(previousElement);
-
-    component.goNextOnRemoveButtonTab(new Event(''));
-
-    expect(component.editableElement).toBe(nextElement);
-  });
-
-  it('should create new element if next element not exists after execute goNextOnRemoveButtonTab', () => {
-    const previousElement = new DynamicFormElement('Previous', DynamicFormTypes['TEXT']);
-    component.form.addElement(previousElement);
-
-    component.edit(previousElement);
-
-    component.goNextOnRemoveButtonTab(new Event(''));
-
-    expect(component.form.elements.length).toEqual(2);
   });
 
   it('should remove element', () => {

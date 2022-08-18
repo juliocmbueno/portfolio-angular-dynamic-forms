@@ -1,0 +1,32 @@
+
+.config-container{
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  color: #FFF;
+  transition: opacity .3s ease-in-out;
+
+  &.hide{
+    padding: 0;
+    margin-bottom: 0;
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  &.show{
+    padding: .25rem 0;
+    margin-bottom: .5rem;
+    height: auto;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.btn {
+  color: #FFF;
+  border-radius: 50%;
+  border: 0;
+}
+.btn:HOVER {
+  background-color: rgba(255, 255, 255, .2);
+}

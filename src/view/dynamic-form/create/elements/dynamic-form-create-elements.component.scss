@@ -1,6 +1,4 @@
 
-@import "src/assets/scss/variables";
-
 .container-element{
   width: 80%;
   margin: auto;
@@ -10,47 +8,18 @@
   margin: 5px auto;
   border-radius: 10px;
   padding: .5rem 11px .5rem 11px;
-
-  .config{
-    border-top-left-radius: inherit;
-    border-top-right-radius: inherit;
-    color: #FFF;
-    padding: 0;
-    margin-bottom: 0;
-    height: 0;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity .3s ease-in-out;
-  }
 }
 
 .container-element .element.editable{
   border: 1px solid #d4d4d4;
   padding-top: 0;
-
-  .config{
-    padding: .25rem 0;
-    margin-bottom: .5rem;
-    height: auto;
-    visibility: visible;
-    opacity: 1;
-  }
 }
 
 textarea{
   resize: none;
 }
 
-.btn {
-  color: #FFF;
-  border-radius: 50%;
-  border: 0;
-}
-.btn:HOVER {
-  background-color: rgba(255, 255, 255, .2);
-}
-
-.required-mark{
-  color: $jb-primary;
-  font-weight: 600;
+app-dynamic-form-create-element-config{
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
 }

@@ -11,13 +11,15 @@ import {DropdownModule} from "primeng/dropdown";
 import {InplaceModule} from "primeng/inplace";
 import {TooltipModule} from "primeng/tooltip";
 import {InputSwitchModule} from "primeng/inputswitch";
+import {DynamicFormCreateElementConfigComponent} from './create/element-config/dynamic-form-create-element-config.component';
 
 @NgModule({
   declarations: [
     DynamicFormCreateComponent,
     DynamicFormCreateTitleComponent,
     DynamicFormCreateDescriptionComponent,
-    DynamicFormCreateElementsComponent
+    DynamicFormCreateElementsComponent,
+    DynamicFormCreateElementConfigComponent
   ],
   imports: [
     CommonModule,
