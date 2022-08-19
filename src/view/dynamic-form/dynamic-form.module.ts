@@ -12,6 +12,10 @@ import {InplaceModule} from "primeng/inplace";
 import {TooltipModule} from "primeng/tooltip";
 import {InputSwitchModule} from "primeng/inputswitch";
 import {DynamicFormCreateElementConfigComponent} from './create/element-config/dynamic-form-create-element-config.component';
+import {DynamicFormCreateElementViewTextComponent} from './create/element-view/text/dynamic-form-create-element-view-text.component';
+import {DynamicFormCreateElementViewTextareaComponent} from './create/element-view/textarea/dynamic-form-create-element-view-textarea.component';
+import {DynamicFormCreateElementViewCheckboxComponent} from './create/element-view/checkbox/dynamic-form-create-element-view-checkbox.component';
+import {DynamicFormCreateElementViewRadioComponent} from './create/element-view/radio/dynamic-form-create-element-view-radio.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,11 @@ import {DynamicFormCreateElementConfigComponent} from './create/element-config/d
     DynamicFormCreateTitleComponent,
     DynamicFormCreateDescriptionComponent,
     DynamicFormCreateElementsComponent,
-    DynamicFormCreateElementConfigComponent
+    DynamicFormCreateElementConfigComponent,
+    DynamicFormCreateElementViewTextComponent,
+    DynamicFormCreateElementViewTextareaComponent,
+    DynamicFormCreateElementViewCheckboxComponent,
+    DynamicFormCreateElementViewRadioComponent
   ],
   imports: [
     CommonModule,

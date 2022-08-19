@@ -1,7 +1,7 @@
 
 <div
   class="config-container row justify-content-end align-items-center jb-bg-primary"
-  [class]="element.type?.elementType"
+  [class]="element.type.elementType"
   [class.hide]="!visible"
   [class.show]="visible">
 
@@ -13,8 +13,8 @@
     <p-dropdown [options]="types" [style]="{minWidth: '200px'}" [(ngModel)]="element.type" placeholder="Select a Country">
       <ng-template pTemplate="selectedItem">
         <div class="row">
-          <div class="col-auto"><i [className]="element.type?.icon"></i></div>
-          <div class="col-auto">{{element.type?.label}}</div>
+          <div class="col-auto"><i [className]="element.type.icon"></i></div>
+          <div class="col-auto">{{element.type.label}}</div>
         </div>
       </ng-template>
       <ng-template let-type pTemplate="item">

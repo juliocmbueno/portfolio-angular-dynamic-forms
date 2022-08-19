@@ -16,8 +16,21 @@
 
     <div>
       <label class="form-label">{{element.label ? element.label : 'New Element'}}<span class="required-mark" *ngIf="element.required">*</span></label>
-      <input type="text" class="form-control" value="{{element.type?.label}}" [disabled]="true" *ngIf="element.type?.elementType === 'TEXT'">
-      <textarea class="form-control" value="{{element.type?.label}}" [rows]="3" [disabled]="true" *ngIf="element.type?.elementType === 'TEXTAREA'"></textarea>
+
+      <div [ngSwitch]="element.type.elementType">
+        <ng-container *ngSwitchCase="typeText">
+          <app-dynamic-form-create-element-view-text [element]="element"></app-dynamic-form-create-element-view-text>
+        </ng-container>
+        <ng-container *ngSwitchCase="typeTextarea">
+          <app-dynamic-form-create-element-view-textarea [element]="element"></app-dynamic-form-create-element-view-textarea>
+        </ng-container>
+        <ng-container *ngSwitchCase="typeRadio">
+          <app-dynamic-form-create-element-view-radio [element]="element"></app-dynamic-form-create-element-view-radio>
+        </ng-container>
+        <ng-container *ngSwitchCase="typeCheckbox">
+          <app-dynamic-form-create-element-view-checkbox [element]="element"></app-dynamic-form-create-element-view-checkbox>
+        </ng-container>
+      </div>
     </div>
   </div>
 </div>

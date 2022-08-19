@@ -48,7 +48,7 @@ describe('DynamicFormCreateComponent', () => {
 
     const element = form.elements[0];
     expect(element.label).toEqual('');
-    expect(element.type?.elementType).toEqual('TEXT');
+    expect(element.type.elementType).toEqual('TEXT');
     expect(component.createElementsComponent.edit).toHaveBeenCalledWith(element);
   });
 });

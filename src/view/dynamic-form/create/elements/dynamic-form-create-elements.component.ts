@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {DynamicFormElement} from "@dynamic-forms/domain/dynamic-form-element";
+import {DynamicFormElement, DynamicFormElementTypeValue} from "@dynamic-forms/domain/dynamic-form-element";
 import {DynamicForm} from "@dynamic-forms/domain/dynamic-form";
 
 @Component({
@@ -12,6 +12,11 @@ export class DynamicFormCreateElementsComponent {
   @Input() form!: DynamicForm;
 
   editableElement!: DynamicFormElement;
+
+  readonly typeText: DynamicFormElementTypeValue = 'TEXT';
+  readonly typeTextarea: DynamicFormElementTypeValue = 'TEXTAREA';
+  readonly typeRadio: DynamicFormElementTypeValue = 'RADIO';
+  readonly typeCheckbox: DynamicFormElementTypeValue = 'CHECKBOX';
 
   constructor() {}
 
