@@ -1,18 +1,9 @@
 <div class="row justify-content-center align-items-center container-title text-center">
-  <div class="col-11 mb-2 container-material-input" [class.editable]="editable" [formGroup]="formGroup">
-
-    <ng-container *ngIf="editable">
-      <textarea
-        id="form-description"
-        formControlName="description"
-        class="form-control input-title"
-        [maxLength]="500"
-        (keydown.enter)="$event.preventDefault()"
-        (input)="autoSizeTextarea()"
-        (blur)="saveDescription()"></textarea>
-    </ng-container>
-    <ng-container *ngIf="!editable">
-      <p class="lead mb-2 text-break" (click)="editDescription()">{{description}}</p>
-    </ng-container>
+  <div class="col-11 mb-2">
+    <app-input-textarea-editable-on-click
+      inputId="form-description"
+      emptyText="Short description"
+      [inputStyle]="formDescriptionStyle"
+      [(value)]="form.description"></app-input-textarea-editable-on-click>
   </div>
 </div>

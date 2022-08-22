@@ -2,32 +2,38 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
-  selector: 'app-input-text-editable-on-click',
-  templateUrl: './input-text-editable-on-click.component.html'
+  selector: 'app-input-textarea-editable-on-click',
+  templateUrl: './input-textarea-editable-on-click.component.html'
 })
-export class InputTextEditableOnClickComponent implements OnInit {
+export class InputTextareaEditableOnClickComponent implements OnInit {
 
   @Input() inputStyle: { [klass: string]: any; } | null = null;
   @Input() inputId!: string;
   @Input() emptyText: string = 'Click to edit'
-  @Input() value: string | undefined;
+  @Input() value: string | undefined = '';
   @Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
 
-  editable: boolean = false;
+  editable:boolean = false;
   formGroup!: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.initFormGroup();
   }
 
-  private initFormGroup():void{
+  private initFormGroup():void {
     this.formGroup = this.formBuilder.group({
       value: [this.value]
     });
+  }
+
+  public save():void {
+    const value:string = this.formGroup.get('value')?.value;
+    this.valueChange.emit(value);
+    this.editable = false;
   }
 
   public edit():void{
@@ -35,15 +41,13 @@ export class InputTextEditableOnClickComponent implements OnInit {
       this.editable = true;
 
       setTimeout(() => {
-        const input: HTMLInputElement|null = document.querySelector<HTMLInputElement>(`#${this.inputId}`);
+        const input: HTMLInputElement|null = this.getTextarea();
         input?.focus();
       }, 1);
     }
   }
 
-  public save():void{
-    const value:string = this.formGroup.get('value')?.value;
-    this.valueChange.emit(value);
-    this.editable = false;
+  private getTextarea(): HTMLInputElement|null{
+    return document.querySelector<HTMLInputElement>(`#${this.inputId}`);
   }
 }

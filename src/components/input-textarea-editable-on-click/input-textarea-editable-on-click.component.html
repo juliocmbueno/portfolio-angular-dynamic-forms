@@ -1,0 +1,17 @@
+<div class="container-material-input" [class.editable]="editable" [formGroup]="formGroup">
+  <ng-container *ngIf="editable">
+    <textarea
+      formControlName="value"
+      class="form-control"
+      [maxLength]="500"
+      [id]="inputId"
+      [autosize]="true"
+      [minRows]="1"
+      [ngStyle]="inputStyle"
+      (keydown.enter)="$event.preventDefault()"
+      (blur)="save()"></textarea>
+  </ng-container>
+  <ng-container *ngIf="!editable">
+    <p class="lead mb-2 text-break" (click)="edit()">{{value || emptyText}}</p>
+  </ng-container>
+</div>

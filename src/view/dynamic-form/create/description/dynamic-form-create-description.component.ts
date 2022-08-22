@@ -1,55 +1,21 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
-
-declare var autosize:any;
+import {Component, Input} from '@angular/core';
+import {DynamicForm} from "@dynamic-forms/domain/dynamic-form";
 
 @Component({
   selector: 'app-dynamic-form-create-description',
-  templateUrl: './dynamic-form-create-description.component.html',
-  styleUrls: ['./dynamic-form-create-description.component.scss']
+  templateUrl: './dynamic-form-create-description.component.html'
 })
-export class DynamicFormCreateDescriptionComponent implements OnInit {
+export class DynamicFormCreateDescriptionComponent {
 
-  @Input() description?: string;
-  @Output() descriptionChange: EventEmitter<string> = new EventEmitter<string>();
+  @Input() form!: DynamicForm;
 
-  editable:boolean = false;
-  formGroup!: FormGroup;
+  formDescriptionStyle:any = {
+    'font-size': '1.25rem',
+    'font-weight': '300',
+    'min-height': '30px',
+    'height': '30px',
+    'text-align': 'center',
+    'resize': 'none',
+  };
 
-  constructor(
-    private formBuilder: FormBuilder
-  ) { }
-
-  ngOnInit(): void {
-    this.initFormGroup();
-  }
-
-  private initFormGroup():void {
-    this.formGroup = this.formBuilder.group({
-      description: []
-    });
-  }
-
-  public saveDescription():void {
-    const description:string = this.formGroup.get('description')?.value;
-    this.descriptionChange.emit(  description || 'Short description');
-    this.editable = false;
-  }
-
-  public editDescription():void{
-    if(!this.editable){
-      this.editable = true;
-    }
-
-    setTimeout(() => {
-      const input: HTMLInputElement|null = document.querySelector<HTMLInputElement>('#form-description');
-      input?.focus();
-      this.autoSizeTextarea();
-    }, 1);
-  }
-
-  public autoSizeTextarea():void{
-    const input: HTMLInputElement|null = document.querySelector<HTMLInputElement>('#form-description');
-    autosize(input);
-  }
 }
