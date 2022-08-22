@@ -16,6 +16,7 @@ import {DynamicFormCreateElementViewTextComponent} from './create/element-view/t
 import {DynamicFormCreateElementViewTextareaComponent} from './create/element-view/textarea/dynamic-form-create-element-view-textarea.component';
 import {DynamicFormCreateElementViewCheckboxComponent} from './create/element-view/checkbox/dynamic-form-create-element-view-checkbox.component';
 import {DynamicFormCreateElementViewRadioComponent} from './create/element-view/radio/dynamic-form-create-element-view-radio.component';
+import {InputTextEditableOnClickModule} from "@dynamic-forms/components/input-text-editable-on-click/input-text-editable-on-click.module";
 
 @NgModule({
   declarations: [
@@ -29,16 +30,17 @@ import {DynamicFormCreateElementViewRadioComponent} from './create/element-view/
     DynamicFormCreateElementViewCheckboxComponent,
     DynamicFormCreateElementViewRadioComponent
   ],
-  imports: [
-    CommonModule,
-    DynamicFormRoutingModule,
-    ReactiveFormsModule,
-    DividerModule,
-    DropdownModule,
-    FormsModule,
-    InplaceModule,
-    TooltipModule,
-    InputSwitchModule
-  ]
+    imports: [
+        CommonModule,
+        DynamicFormRoutingModule,
+        ReactiveFormsModule,
+        DividerModule,
+        DropdownModule,
+        FormsModule,
+        InplaceModule,
+        TooltipModule,
+        InputSwitchModule,
+        InputTextEditableOnClickModule
+    ]
 })
 export class DynamicFormModule { }

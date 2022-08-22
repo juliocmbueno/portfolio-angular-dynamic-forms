@@ -1,47 +1,19 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {Component, Input} from '@angular/core';
+import {DynamicForm} from "@dynamic-forms/domain/dynamic-form";
 
 @Component({
   selector: 'app-dynamic-form-create-title',
-  templateUrl: './dynamic-form-create-title.component.html',
-  styleUrls: ['dynamic-form-create-title.component.scss']
+  templateUrl: './dynamic-form-create-title.component.html'
 })
-export class DynamicFormCreateTitleComponent implements OnInit {
+export class DynamicFormCreateTitleComponent {
 
-  @Input() title: string | undefined;
-  @Output() titleChange: EventEmitter<string> = new EventEmitter<string>();
+  @Input() form!: DynamicForm;
 
-  editable: boolean = false;
-  formGroup!: FormGroup;
+  formTitleStyle = {
+    'line-height': '1.2',
+    'font-weight': '500',
+    'font-size': '2rem',
+    'text-align': 'center'
+  };
 
-  constructor(
-      private formBuilder: FormBuilder
-  ) {}
-
-  ngOnInit(): void {
-    this.initFormGroup();
-  }
-
-  private initFormGroup():void{
-    this.formGroup = this.formBuilder.group({
-      title: []
-    });
-  }
-
-  public editTitle():void{
-    if(!this.editable){
-      this.editable = true;
-    }
-
-    setTimeout(() => {
-      const input: HTMLInputElement|null = document.querySelector<HTMLInputElement>('#form-title');
-      input?.focus();
-    }, 1);
-  }
-
-  public saveTitle():void{
-    const title:string = this.formGroup.get('title')?.value;
-    this.titleChange.emit(title || 'Click to set title');
-    this.editable = false;
-  }
 }
