@@ -1,12 +1,39 @@
-<div class="form-check">
-  <input class="form-check-input opacity-100" type="radio" name="radio" id="radio-1" [disabled]="true">
-  <label class="form-check-label" for="radio-1">
-    Option 1
-  </label>
-</div>
-<div class="form-check">
-  <input class="form-check-input opacity-100" type="radio" name="radio" id="radio-2" [disabled]="true">
-  <label class="form-check-label" for="radio-2">
-    Option 2
-  </label>
+<div class="container-element-option">
+  <div class="row element-option" *ngFor="let option of element.options; let index = index">
+    <div class="col-auto align-self-center">
+      <input
+        class="form-check-input opacity-100"
+        type="radio"
+        name="radio"
+        [value]="option.value"
+        [id]="option.elementId.value"
+        [disabled]="true">
+    </div>
+    <div class="col col-md-8 col-lg-4 ps-0">
+      <app-input-text-editable-on-click
+        #inputTextEditableOnClick
+        [inputId]="'form-check-'+option.elementId.value"
+        [value]="option.value"
+        [inputStyle]="{'line-height': 'inherit'}"
+        (valueChange)="updateOption(option, $event)"></app-input-text-editable-on-click>
+    </div>
+    <div class="col-auto">
+      <button
+        class="btn p-0 ps-2 pe-2 border-0"
+        pTooltip="Remove"
+        tooltipPosition="top"
+        style="line-height: inherit"
+        (click)="remove(option)"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="col-auto ps-0">
+    </div>
+  </div>
+  <div class="row element-option">
+    <div class="col-auto align-self-center">
+      <input class="form-check-input opacity-100" type="radio" name="radio" [disabled]="true">
+    </div>
+    <div class="col col-md-8 col-lg-4 ps-0" (click)="addOption()">
+      Add new option
+    </div>
+  </div>
 </div>

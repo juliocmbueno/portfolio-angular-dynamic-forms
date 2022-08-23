@@ -1,4 +1,5 @@
 import {DynamicFormElement, DynamicFormElementType, DynamicFormTypes} from '@dynamic-forms/domain/dynamic-form-element';
+import {DynamicFormElementOption} from "@dynamic-forms/domain/dynamic-form-element-option";
 
 describe('DynamicFormElement', () => {
   it('should create', function () {
@@ -12,20 +13,20 @@ describe('DynamicFormElement', () => {
 
   it('should add some option', function () {
     const element = new DynamicFormElement('Name', DynamicFormTypes['TEXT']);
-    const option = 'Option 1';
+    const option = new DynamicFormElementOption('Option 1');
 
-    element.addOption('Option 1');
+    element.addOption(option);
 
-    expect(element.options.includes('Option 1')).toBeTrue();
+    expect(element.options.includes(option)).toBeTrue();
   });
 
   it('should remove option', function () {
     const element = new DynamicFormElement('Name', DynamicFormTypes['TEXT']);
 
-    const option_1 = 'Option 1';
+    const option_1 = new DynamicFormElementOption('Option 1');
     element.addOption(option_1);
 
-    const option_2 = 'Option 2';
+    const option_2 = new DynamicFormElementOption('Option 2');
     element.addOption(option_2);
 
     expect(element.options.includes(option_1)).toBeTrue();
@@ -41,12 +42,12 @@ describe('DynamicFormElement', () => {
   it('should return next option', function () {
     const element = new DynamicFormElement('Name', DynamicFormTypes['TEXT']);
 
-    const previous = 'Previous';
+    const previous = new DynamicFormElementOption('Previous');
     element.addOption(previous);
 
     expect(element.nextOptionOf(previous)).toBeFalsy();
 
-    const next = 'Next';
+    const next = new DynamicFormElementOption('Next');
     element.addOption(next);
 
     expect(element.nextOptionOf(previous)).toBe(next);
@@ -55,10 +56,10 @@ describe('DynamicFormElement', () => {
   it('should return previous option', function () {
     const element = new DynamicFormElement('Name', DynamicFormTypes['TEXT']);
 
-    const next = 'Next';
+    const next = new DynamicFormElementOption('Next');
     expect(element.previousOptionOf(next)).toBeFalsy();
 
-    const previous = 'Previous';
+    const previous = new DynamicFormElementOption('Previous');
     element.addOption(previous);
     element.addOption(next);
 
@@ -68,7 +69,7 @@ describe('DynamicFormElement', () => {
   it('should return index of option', function () {
     const element = new DynamicFormElement('Name', DynamicFormTypes['TEXT']);
 
-    const option = 'Option';
+    const option = new DynamicFormElementOption('Option');
     expect(element.indexOf(option)).toEqual(-1);
 
     element.addOption(option);

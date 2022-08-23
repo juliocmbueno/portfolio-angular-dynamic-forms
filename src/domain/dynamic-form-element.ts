@@ -1,3 +1,4 @@
+import {DynamicFormElementOption} from "@dynamic-forms/domain/dynamic-form-element-option";
 
 export type DynamicFormElementTypeValue = 'TEXT'|'TEXTAREA'|'RADIO'|'CHECKBOX';
 
@@ -5,7 +6,7 @@ export class DynamicFormElement {
   label: string | undefined;
   required: boolean;
   type: DynamicFormElementType;
-  options: string[];
+  options: DynamicFormElementOption[];
 
   constructor(label: string, type: DynamicFormElementType){
     this.required = false;
@@ -14,26 +15,29 @@ export class DynamicFormElement {
     this.options = [];
   }
 
-  public addOption(option: string):void{
+  public addOption(option: DynamicFormElementOption):void{
     this.options.push(option);
   }
 
-  public removeOption(option: string):void{
-    const index = this.indexOf(option);
+  public removeOption(option: DynamicFormElementOption):void{
+    this.removeOptionByIndex(this.indexOf(option));
+  }
+
+  public removeOptionByIndex(index: number):void{
     if(index >= 0){
       this.options.splice(index, 1);
     }
   }
 
-  public nextOptionOf(option: string): string{
+  public nextOptionOf(option: DynamicFormElementOption): DynamicFormElementOption{
     return this.options[this.indexOf(option)+1];
   }
 
-  public previousOptionOf(option: string): string{
+  public previousOptionOf(option: DynamicFormElementOption): DynamicFormElementOption{
     return this.options[this.indexOf(option)-1];
   }
 
-  public indexOf(option: string): number{
+  public indexOf(option: DynamicFormElementOption): number{
     return this.options.indexOf(option);
   }
 }

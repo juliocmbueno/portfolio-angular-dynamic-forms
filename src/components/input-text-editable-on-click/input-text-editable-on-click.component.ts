@@ -8,6 +8,8 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 export class InputTextEditableOnClickComponent implements OnInit {
 
   @Input() inputStyle: { [klass: string]: any; } | null = null;
+  @Input() valueStyle: { [klass: string]: any; } | null = null;
+  @Input() styleClassValueNotEditable:string|string[] = [];
   @Input() inputId!: string;
   @Input() emptyText: string = 'Click to edit'
   @Input() value: string | undefined;
@@ -35,8 +37,9 @@ export class InputTextEditableOnClickComponent implements OnInit {
       this.editable = true;
 
       setTimeout(() => {
-        const input: HTMLInputElement|null = document.querySelector<HTMLInputElement>(`#${this.inputId}`);
+        const input = this.getInput();
         input?.focus();
+        setTimeout(() => input?.select(), 1);
       }, 1);
     }
   }
@@ -44,6 +47,17 @@ export class InputTextEditableOnClickComponent implements OnInit {
   public save():void{
     const value:string = this.formGroup.get('value')?.value;
     this.valueChange.emit(value);
-    this.editable = false;
+    if(value != 'teste'){
+      this.editable = false;
+    }
+  }
+
+  public select():void{
+    const length = this.value?.length || 0;
+    this.getInput()?.setSelectionRange(0, length);
+  }
+
+  private getInput(): HTMLInputElement|null{
+    return document.querySelector<HTMLInputElement>(`#${this.inputId}`);
   }
 }
