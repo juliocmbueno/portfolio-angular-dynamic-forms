@@ -29,6 +29,48 @@ export class DynamicFormCreateElementViewRadioComponent {
   }
 
   public remove(option: DynamicFormElementOption):void{
+    const closer = this.element.nextOptionOf(option) || this.element.previousOptionOf(option);
+    const inputEditable = this.getInputEditableFromOption(closer);
+
     this.element.removeOption(option);
+
+    inputEditable?.edit();
+  }
+
+  private getInputEditableFromOption(option: DynamicFormElementOption): InputTextEditableOnClickComponent | undefined{
+    const index = this.element.indexOf(option);
+    return this.inputsEditable.get(index);
+  }
+
+  public deleteOptionIfEmpty(event: Event, option: DynamicFormElementOption):void{
+    event.stopImmediatePropagation();
+    const inputValue = this.getInputEditableFromOption(option)?.getControlValue();
+
+    if(inputValue?.length == 0){
+      if(option.value.length == 0){
+        this.remove(option);
+
+      } else {
+        option.value = '';
+
+      }
+    }
+  }
+
+  public editPrevious(option: DynamicFormElementOption):void{
+    const previous = this.element.previousOptionOf(option);
+    this.getInputEditableFromOption(previous)?.edit();
+  }
+
+  public editNext(option: DynamicFormElementOption):void{
+    const next = this.element.nextOptionOf(option);
+
+    if(next){
+      this.getInputEditableFromOption(next)?.edit();
+
+    } else {
+      this.addOption();
+
+    }
   }
 }

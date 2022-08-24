@@ -6,6 +6,7 @@ describe('DynamicFormElement', () => {
     const element = new DynamicFormElement('Name', DynamicFormTypes['TEXT']);
 
     expect(element).toBeTruthy();
+    expect(element.elementId).toBeTruthy();
     expect(element.label).toBe('Name');
     expect(element.type?.elementType).toBe('TEXT');
     expect(element.required).toBeFalse();

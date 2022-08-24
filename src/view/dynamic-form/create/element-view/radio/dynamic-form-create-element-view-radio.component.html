@@ -1,5 +1,5 @@
 <div class="container-element-option">
-  <div class="row element-option" *ngFor="let option of element.options; let index = index">
+  <div class="row element-option" *ngFor="let option of element.options">
     <div class="col-auto align-self-center">
       <input
         class="form-check-input opacity-100"
@@ -14,6 +14,11 @@
         #inputTextEditableOnClick
         [inputId]="'form-check-'+option.elementId.value"
         [value]="option.value"
+        (keyup.arrowUp)="editPrevious(option)"
+        (keyup.arrowDown)="editNext(option)"
+        (keyup.enter)="editNext(option)"
+        (keyup.delete)="deleteOptionIfEmpty($event, option)"
+        (keyup.backspace)="deleteOptionIfEmpty($event, option)"
         [inputStyle]="{'line-height': 'inherit'}"
         (valueChange)="updateOption(option, $event)"></app-input-text-editable-on-click>
     </div>

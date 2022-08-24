@@ -6,7 +6,7 @@
   [class.show]="visible">
 
   <div class="config-title col-12 col-md-auto pb-1 pb-md-0">
-    <input type="text" class="form-control" id="{{'config-element-title-'+index}}" placeholder="Element Title" [(ngModel)]="element.label">
+    <input type="text" class="form-control" id="{{'config-element-title-'+element.elementId.value}}" placeholder="Element Title" [(ngModel)]="element.label">
   </div>
 
   <div class="config-type col-12 col-md-auto pb-1 pb-md-0">
@@ -28,8 +28,8 @@
 
   <div class="config-required col-12 col-md-auto pb-1 pb-md-0 text-end">
     <div class="d-flex align-items-center justify-content-end">
-      <label for="{{'element-required-'+index}}" class="me-2">Required</label>
-      <p-inputSwitch styleClass="light" inputId="{{'element-required-'+index}}" [(ngModel)]="element.required"></p-inputSwitch>
+      <label for="{{'element-required-'+element.elementId.value}}" class="me-2">Required</label>
+      <p-inputSwitch styleClass="light" inputId="{{'element-required-'+element.elementId.value}}" [(ngModel)]="element.required"></p-inputSwitch>
     </div>
   </div>
 

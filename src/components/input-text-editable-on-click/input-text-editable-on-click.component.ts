@@ -47,9 +47,7 @@ export class InputTextEditableOnClickComponent implements OnInit {
   public save():void{
     const value:string = this.formGroup.get('value')?.value;
     this.valueChange.emit(value);
-    if(value != 'teste'){
-      this.editable = false;
-    }
+    this.editable = false;
   }
 
   public select():void{
@@ -57,7 +55,11 @@ export class InputTextEditableOnClickComponent implements OnInit {
     this.getInput()?.setSelectionRange(0, length);
   }
 
-  private getInput(): HTMLInputElement|null{
+  public getInput(): HTMLInputElement|null{
     return document.querySelector<HTMLInputElement>(`#${this.inputId}`);
+  }
+
+  public getControlValue(): string | undefined{
+    return this.formGroup.get('value')?.value;
   }
 }

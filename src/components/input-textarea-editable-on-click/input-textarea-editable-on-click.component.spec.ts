@@ -46,4 +46,22 @@ describe('InputTextareaEditableOnClickComponent', () => {
 
     expect(component.editable).toBeTrue();
   });
+
+  it('should be editable true after edit', () => {
+    component.ngOnInit();
+
+    component.edit();
+
+    expect(component.editable).toBeTrue();
+  });
+
+  it(`should select input value`, () => {
+    try{
+      component.select();
+
+    }catch (e) {
+      fail(e);
+
+    }
+  });
 });

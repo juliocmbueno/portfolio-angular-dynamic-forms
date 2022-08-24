@@ -9,7 +9,7 @@ export class DynamicFormCreateDescriptionComponent {
 
   @Input() form!: DynamicForm;
 
-  formDescriptionStyle:any = {
+  inputStyle:any = {
     'font-size': '1.25rem',
     'font-weight': '300',
     'min-height': '30px',
@@ -18,4 +18,10 @@ export class DynamicFormCreateDescriptionComponent {
     'resize': 'none',
   };
 
+  valueStyle:any = {
+    'font-size': '1.25rem',
+    'font-weight': '300',
+    'min-height': '30px',
+    'text-align': 'center'
+  };
 }

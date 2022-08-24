@@ -12,6 +12,6 @@
       (blur)="save()"></textarea>
   </ng-container>
   <ng-container *ngIf="!editable">
-    <p class="lead mb-2 text-break" (click)="edit()">{{value || emptyText}}</p>
+    <div class="value text-break" [ngStyle]="valueStyle" (click)="edit()">{{value || emptyText}}</div>
   </ng-container>
 </div>

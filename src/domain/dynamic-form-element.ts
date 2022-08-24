@@ -1,4 +1,5 @@
 import {DynamicFormElementOption} from "@dynamic-forms/domain/dynamic-form-element-option";
+import {Uuid} from "@dynamic-forms/domain/uuid";
 
 export type DynamicFormElementTypeValue = 'TEXT'|'TEXTAREA'|'RADIO'|'CHECKBOX';
 
@@ -6,9 +7,11 @@ export class DynamicFormElement {
   label: string | undefined;
   required: boolean;
   type: DynamicFormElementType;
+  elementId: Uuid;
   options: DynamicFormElementOption[];
 
   constructor(label: string, type: DynamicFormElementType){
+    this.elementId = new Uuid();
     this.required = false;
     this.label = label;
     this.type = type;

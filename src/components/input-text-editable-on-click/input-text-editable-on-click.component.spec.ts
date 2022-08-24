@@ -1,10 +1,11 @@
-import {TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {InputTextEditableOnClickComponent} from './input-text-editable-on-click.component';
 import {FormBuilder} from "@angular/forms";
 
 describe('InputTextEditableOnClickComponent', () => {
   let component: InputTextEditableOnClickComponent;
+  let fixture: ComponentFixture<InputTextEditableOnClickComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -12,7 +13,7 @@ describe('InputTextEditableOnClickComponent', () => {
       providers: [ FormBuilder ]
     }).compileComponents();
 
-    const fixture = TestBed.createComponent(InputTextEditableOnClickComponent);
+    fixture = TestBed.createComponent(InputTextEditableOnClickComponent);
     component = fixture.componentInstance;
   });
 
@@ -45,5 +46,24 @@ describe('InputTextEditableOnClickComponent', () => {
     component.edit();
 
     expect(component.editable).toBeTrue();
+  });
+
+  it(`should return formcontrol's formgroup value`, () => {
+    component.ngOnInit();
+
+    component.formGroup.get('value')?.setValue('New Value');
+
+    expect(component.getControlValue()).toEqual('New Value');
+  });
+
+  it(`should select input value`, () => {
+    try{
+      component.select();
+
+    }catch (e) {
+      fail(e);
+
+
+    }
   });
 });

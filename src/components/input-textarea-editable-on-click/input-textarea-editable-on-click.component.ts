@@ -8,6 +8,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 export class InputTextareaEditableOnClickComponent implements OnInit {
 
   @Input() inputStyle: { [klass: string]: any; } | null = null;
+  @Input() valueStyle: { [klass: string]: any; } | null = null;
   @Input() inputId!: string;
   @Input() emptyText: string = 'Click to edit'
   @Input() value: string | undefined = '';
@@ -41,10 +42,16 @@ export class InputTextareaEditableOnClickComponent implements OnInit {
       this.editable = true;
 
       setTimeout(() => {
-        const input: HTMLInputElement|null = this.getTextarea();
-        input?.focus();
+        const textarea = this.getTextarea();
+        textarea?.focus();
+        setTimeout(() => textarea?.select(), 1);
       }, 1);
     }
+  }
+
+  public select():void{
+    const length = this.value?.length || 0;
+    this.getTextarea()?.setSelectionRange(0, length);
   }
 
   private getTextarea(): HTMLInputElement|null{

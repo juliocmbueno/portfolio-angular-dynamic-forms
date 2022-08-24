@@ -11,6 +11,9 @@
       (blur)="save()">
   </ng-container>
   <ng-container *ngIf="!editable">
-    <div class="text-break" [ngStyle]="valueStyle" [ngClass]="styleClassValueNotEditable" (click)="edit()">{{value || emptyText}}</div>
+    <div class="value text-break" style="margin-bottom: .1rem" [ngStyle]="valueStyle" [ngClass]="styleClassValueNotEditable" (click)="edit()">
+      <div #content><ng-content></ng-content></div>
+      <span *ngIf="!content.children.length && !content.textContent">{{value || emptyText}}</span>
+    </div>
   </ng-container>
 </div>

@@ -4,12 +4,11 @@
     [ngClass]="{'editable shadow-sm': editableElement === element}"
     (click)="edit(element)"
     (keyup.delete)="remove(element)"
-    *ngFor="let element of form.elements; let index = index">
+    *ngFor="let element of form.elements">
 
     <app-dynamic-form-create-element-config
       [form]="form"
       [element]="element"
-      [index]="index"
       [visible]="editableElement === element"
       (onRemove)="edit($event)"
       (editNext)="edit($event)"></app-dynamic-form-create-element-config>

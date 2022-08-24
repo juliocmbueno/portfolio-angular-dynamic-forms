@@ -11,7 +11,6 @@ export class DynamicFormCreateElementConfigComponent implements OnInit {
 
   @Input() form!: DynamicForm;
   @Input() element!: DynamicFormElement;
-  @Input() index!:number;
   @Input() visible:boolean = false;
 
   @Output() onRemove: EventEmitter<DynamicFormElement> = new EventEmitter<DynamicFormElement>();
