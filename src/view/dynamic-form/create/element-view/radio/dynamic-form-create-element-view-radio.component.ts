@@ -12,19 +12,38 @@ export class DynamicFormCreateElementViewRadioComponent {
 
   @Input() element!: DynamicFormElement;
 
+  @Input() editable:boolean = false;
+
   @ViewChildren('inputTextEditableOnClick') inputsEditable!: QueryList<InputTextEditableOnClickComponent>;
 
+  exceptions: {[key:string]: string} = {};
   nameAux:number = 1;
 
   public addOption(): void{
-    const newOption = new DynamicFormElementOption(`New Option ${this.nameAux++}`);
+    const newOption = new DynamicFormElementOption(this.getNewOptionName());
     this.element.addOption(newOption);
     setTimeout(() => this.inputsEditable.last.edit(), 10);
   }
 
+  private getNewOptionName():string{
+    return `New Option ${this.nameAux++}`;
+  }
+
   public updateOption(option: DynamicFormElementOption, newOptionValue: string): void{
+    if(newOptionValue.length == 0){
+      option.value = this.getNewOptionName();
+      this.getInputEditableFromOption(option)?.setControlValue(option.value);
+      return;
+    }
+
+    if(this.exceptions[option.elementId.value]){
+      delete this.exceptions[option.elementId.value];
+      this.getInputEditableFromOption(option)?.setControlValue(option.value);
+      return;
+    }
+
     if(option.value != newOptionValue){
-      option.value = newOptionValue;
+        option.value = newOptionValue;
     }
   }
 
@@ -43,6 +62,7 @@ export class DynamicFormCreateElementViewRadioComponent {
   }
 
   public deleteOptionIfEmpty(event: Event, option: DynamicFormElementOption):void{
+    event.stopPropagation();
     event.stopImmediatePropagation();
     const inputValue = this.getInputEditableFromOption(option)?.getControlValue();
 
@@ -71,6 +91,24 @@ export class DynamicFormCreateElementViewRadioComponent {
     } else {
       this.addOption();
 
+    }
+  }
+
+  public onRemoveBtnTagKeyDown(event:Event, option: DynamicFormElementOption):void{
+    event.preventDefault();
+    this.editNext(option);
+  }
+
+  public onInputValue(value:string, option: DynamicFormElementOption):void{
+    delete this.exceptions[option.elementId.value];
+
+    const duplicatedValue = this.element.options
+      .filter(optionTemp => optionTemp != option)
+      .map(optionTemp => optionTemp.value)
+      .some(valueTemp => valueTemp?.toLocaleLowerCase() === value?.toLowerCase());
+
+    if(duplicatedValue){
+      this.exceptions[option.elementId.value] = 'Duplicated Value';
     }
   }
 }

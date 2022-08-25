@@ -4,5 +4,21 @@
 }
 
 .container-element-option .element-option{
-  line-height: 27.2px;
+  line-height: 1.5rem;
+}
+
+.btn.remove {
+  border-radius: 50%;
+  border: 0;
+  font-size: 1.2rem;
+  padding: 1px 7px;
+  line-height: inherit;
+}
+.btn.remove:HOVER, .btn.remove:focus {
+  background-color: rgba(84, 84, 84, 0.1);
+}
+
+.container-error-message{
+  font-size: 1.2rem;
+  min-width: 31.2px;
 }

@@ -49,11 +49,6 @@ export class InputTextareaEditableOnClickComponent implements OnInit {
     }
   }
 
-  public select():void{
-    const length = this.value?.length || 0;
-    this.getTextarea()?.setSelectionRange(0, length);
-  }
-
   private getTextarea(): HTMLInputElement|null{
     return document.querySelector<HTMLInputElement>(`#${this.inputId}`);
   }

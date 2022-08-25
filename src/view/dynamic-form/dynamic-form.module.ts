@@ -31,18 +31,18 @@ import {InputTextareaEditableOnClickModule} from "@dynamic-forms/components/inpu
     DynamicFormCreateElementViewCheckboxComponent,
     DynamicFormCreateElementViewRadioComponent
   ],
-  imports: [
-    CommonModule,
-    DynamicFormRoutingModule,
-    ReactiveFormsModule,
-    DividerModule,
-    DropdownModule,
-    FormsModule,
-    InplaceModule,
-    TooltipModule,
-    InputSwitchModule,
-    InputTextEditableOnClickModule,
-    InputTextareaEditableOnClickModule
-  ]
+    imports: [
+        CommonModule,
+        DynamicFormRoutingModule,
+        ReactiveFormsModule,
+        DividerModule,
+        DropdownModule,
+        FormsModule,
+        InplaceModule,
+        TooltipModule,
+        InputSwitchModule,
+        InputTextEditableOnClickModule,
+        InputTextareaEditableOnClickModule
+    ]
 })
 export class DynamicFormModule { }

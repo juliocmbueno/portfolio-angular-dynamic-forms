@@ -5,7 +5,5 @@ describe('DynamicFormElementOption', () => {
     const option = new DynamicFormElementOption('Option');
     expect(option).toBeTruthy();
     expect(option.elementId).toBeTruthy();
-
-    console.log(option.elementId);
   });
 });

@@ -48,7 +48,7 @@ describe('InputTextEditableOnClickComponent', () => {
     expect(component.editable).toBeTrue();
   });
 
-  it(`should return formcontrol's formgroup value`, () => {
+  it(`should get formcontrol's formgroup value`, () => {
     component.ngOnInit();
 
     component.formGroup.get('value')?.setValue('New Value');
@@ -56,14 +56,21 @@ describe('InputTextEditableOnClickComponent', () => {
     expect(component.getControlValue()).toEqual('New Value');
   });
 
-  it(`should select input value`, () => {
-    try{
-      component.select();
+  it(`should set formcontrol's formgroup value`, () => {
+    component.ngOnInit();
 
-    }catch (e) {
-      fail(e);
+    component.setControlValue('New Value');
 
+    expect(component.formGroup.get('value')?.value).toEqual('New Value');
+  });
 
-    }
+  it(`should emit onInput`, () => {
+    component.ngOnInit();
+
+    spyOn(component.onInput, 'emit');
+
+    component.input();
+
+    expect(component.onInput.emit).toHaveBeenCalled();
   });
 });

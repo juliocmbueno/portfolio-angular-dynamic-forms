@@ -36,7 +36,7 @@ describe('DynamicFormCreateElementViewRadioComponent', () => {
     fixture.whenStable().then(() => {
       expect(component.element.options.length).toBe(1);
       expect(component.inputsEditable.last.editable).toBeTrue();
-    })
+    });
   }));
 
   it('should update option value', () => {
@@ -46,6 +46,39 @@ describe('DynamicFormCreateElementViewRadioComponent', () => {
     component.updateOption(option, 'New value option');
 
     expect(option.value).toEqual('New value option');
+  });
+
+  it('should define a new option value when de value is empty', () => {
+    const inputEditable: InputTextEditableOnClickComponent = component.inputsEditable.last;
+    inputEditable.ngOnInit();
+    inputEditable.setControlValue('');
+
+    component.addOption();
+    const option = component.element.options[0];
+
+    component.updateOption(option, '');
+
+    const newValue = `New Option ${component.nameAux - 1}`;
+    expect(option.value).toEqual(newValue);
+    expect(inputEditable.getControlValue()).toEqual(newValue);
+  });
+
+  it('should not update value with exists an exception', () => {
+    const inputEditable: InputTextEditableOnClickComponent = component.inputsEditable.last;
+    inputEditable.ngOnInit();
+    inputEditable.setControlValue('');
+
+    component.addOption();
+    const option = component.element.options[0];
+    option.value = 'Old value';
+
+    component.exceptions[option.elementId.value] = 'Exception';
+
+    component.updateOption(option, 'New value');
+
+    expect(option.value).toEqual('Old value');
+    expect(inputEditable.getControlValue()).toEqual('Old value');
+    expect(component.exceptions[option.elementId.value]).toBeFalsy();
   });
 
   it('should remove option value', () => {
@@ -124,5 +157,28 @@ describe('DynamicFormCreateElementViewRadioComponent', () => {
     component.editNext(previous);
 
     expect(component.element.options.length).toEqual(2);
+  });
+
+  it('should editNext when tab keydown in btn remove', () => {
+    component.addOption();
+    const previous = component.element.options[0];
+
+    expect(component.element.options.length).toEqual(1);
+
+    component.onRemoveBtnTagKeyDown(new Event(''), previous);
+
+    expect(component.element.options.length).toEqual(2);
+  });
+
+  it('should add duplicate exception', () => {
+    component.addOption();
+    const option_1 = component.element.options[0];
+
+    component.addOption();
+    const option_2 = component.element.options[1];
+
+    component.onInputValue(option_1.value, option_2);
+
+    expect(component.exceptions[option_2.elementId.value]).toEqual('Duplicated Value')
   });
 });

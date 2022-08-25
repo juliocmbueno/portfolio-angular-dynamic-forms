@@ -1,10 +1,11 @@
-import {TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {InputTextareaEditableOnClickComponent} from './input-textarea-editable-on-click.component';
 import {FormBuilder} from "@angular/forms";
 
 describe('InputTextareaEditableOnClickComponent', () => {
   let component: InputTextareaEditableOnClickComponent;
+  let fixture: ComponentFixture<InputTextareaEditableOnClickComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -12,7 +13,7 @@ describe('InputTextareaEditableOnClickComponent', () => {
       declarations: [ InputTextareaEditableOnClickComponent ]
     }).compileComponents();
 
-    const fixture = TestBed.createComponent(InputTextareaEditableOnClickComponent);
+    fixture = TestBed.createComponent(InputTextareaEditableOnClickComponent);
     component = fixture.componentInstance;
   });
 
@@ -53,15 +54,5 @@ describe('InputTextareaEditableOnClickComponent', () => {
     component.edit();
 
     expect(component.editable).toBeTrue();
-  });
-
-  it(`should select input value`, () => {
-    try{
-      component.select();
-
-    }catch (e) {
-      fail(e);
-
-    }
   });
 });

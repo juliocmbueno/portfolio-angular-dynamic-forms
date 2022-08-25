@@ -25,8 +25,7 @@ export class DynamicFormCreateElementsComponent {
       this.editableElement = element;
 
       setTimeout(() => {
-        const index = this.form.indexOf(element);
-        document.querySelector<HTMLElement>(`#config-element-title-${index}`)?.focus();
+        document.querySelector<HTMLElement>(`#config-element-title-${element.elementId.value}`)?.focus();
       }, 10);
     }
   }

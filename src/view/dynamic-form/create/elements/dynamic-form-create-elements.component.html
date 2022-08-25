@@ -18,16 +18,21 @@
 
       <div [ngSwitch]="element.type.elementType">
         <ng-container *ngSwitchCase="typeText">
-          <app-dynamic-form-create-element-view-text [element]="element"></app-dynamic-form-create-element-view-text>
+          <app-dynamic-form-create-element-view-text
+            [element]="element"></app-dynamic-form-create-element-view-text>
         </ng-container>
         <ng-container *ngSwitchCase="typeTextarea">
-          <app-dynamic-form-create-element-view-textarea [element]="element"></app-dynamic-form-create-element-view-textarea>
+          <app-dynamic-form-create-element-view-textarea
+            [element]="element"></app-dynamic-form-create-element-view-textarea>
         </ng-container>
         <ng-container *ngSwitchCase="typeRadio">
-          <app-dynamic-form-create-element-view-radio [element]="element"></app-dynamic-form-create-element-view-radio>
+          <app-dynamic-form-create-element-view-radio
+            [element]="element"
+            [editable]="editableElement === element"></app-dynamic-form-create-element-view-radio>
         </ng-container>
         <ng-container *ngSwitchCase="typeCheckbox">
-          <app-dynamic-form-create-element-view-checkbox [element]="element"></app-dynamic-form-create-element-view-checkbox>
+          <app-dynamic-form-create-element-view-checkbox
+            [element]="element"></app-dynamic-form-create-element-view-checkbox>
         </ng-container>
       </div>
     </div>

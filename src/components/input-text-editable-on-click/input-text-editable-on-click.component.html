@@ -8,6 +8,7 @@
       [ngStyle]="inputStyle"
       [id]="inputId"
       [maxLength]="50"
+      (input)="input();"
       (blur)="save()">
   </ng-container>
   <ng-container *ngIf="!editable">

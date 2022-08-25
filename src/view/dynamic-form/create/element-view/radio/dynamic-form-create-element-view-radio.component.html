@@ -1,6 +1,6 @@
 <div class="container-element-option">
-  <div class="row element-option" *ngFor="let option of element.options">
-    <div class="col-auto align-self-center">
+  <div class="row element-option align-items-center" *ngFor="let option of element.options">
+    <div class="col-auto align-self-center pe-0">
       <input
         class="form-check-input opacity-100"
         type="radio"
@@ -9,7 +9,7 @@
         [id]="option.elementId.value"
         [disabled]="true">
     </div>
-    <div class="col col-md-8 col-lg-4 ps-0">
+    <div class="col col-md-8 col-lg-4 pe-0">
       <app-input-text-editable-on-click
         #inputTextEditableOnClick
         [inputId]="'form-check-'+option.elementId.value"
@@ -20,24 +20,26 @@
         (keyup.delete)="deleteOptionIfEmpty($event, option)"
         (keyup.backspace)="deleteOptionIfEmpty($event, option)"
         [inputStyle]="{'line-height': 'inherit'}"
+        (onInput)="onInputValue($event, option)"
         (valueChange)="updateOption(option, $event)"></app-input-text-editable-on-click>
     </div>
-    <div class="col-auto">
+    <div class="col-auto pe-0 container-error-message">
+      <i class="fa-solid fa-triangle-exclamation text-danger error-message" [pTooltip]="exceptions[option.elementId.value]" *ngIf="exceptions[option.elementId.value]"></i>
+    </div>
+    <div class="col-auto" *ngIf="editable">
       <button
-        class="btn p-0 ps-2 pe-2 border-0"
+        class="btn remove"
         pTooltip="Remove"
         tooltipPosition="top"
-        style="line-height: inherit"
-        (click)="remove(option)"><i class="fa-solid fa-xmark"></i></button>
-    </div>
-    <div class="col-auto ps-0">
+        (click)="remove(option)"
+        (keydown.tab)="onRemoveBtnTagKeyDown($event, option)"><i class="fa-solid fa-xmark"></i></button>
     </div>
   </div>
-  <div class="row element-option">
-    <div class="col-auto align-self-center">
+  <div class="row element-option align-items-center" *ngIf="editable">
+    <div class="col-auto align-self-center pe-0">
       <input class="form-check-input opacity-100" type="radio" name="radio" [disabled]="true">
     </div>
-    <div class="col col-md-8 col-lg-4 ps-0" (click)="addOption()">
+    <div class="col col-md-8 col-lg-4 pe-0" (click)="addOption()">
       Add new option
     </div>
   </div>

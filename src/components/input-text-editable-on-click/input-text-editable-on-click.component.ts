@@ -14,6 +14,7 @@ export class InputTextEditableOnClickComponent implements OnInit {
   @Input() emptyText: string = 'Click to edit'
   @Input() value: string | undefined;
   @Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
+  @Output() onInput: EventEmitter<string> = new EventEmitter<string>();
 
   editable: boolean = false;
   formGroup!: FormGroup;
@@ -50,16 +51,19 @@ export class InputTextEditableOnClickComponent implements OnInit {
     this.editable = false;
   }
 
-  public select():void{
-    const length = this.value?.length || 0;
-    this.getInput()?.setSelectionRange(0, length);
-  }
-
   public getInput(): HTMLInputElement|null{
     return document.querySelector<HTMLInputElement>(`#${this.inputId}`);
   }
 
   public getControlValue(): string | undefined{
     return this.formGroup.get('value')?.value;
+  }
+
+  public setControlValue(value: string){
+    this.formGroup.get('value')?.setValue(value);
+  }
+
+  public input():void{
+    this.onInput.emit(this.getInput()?.value);
   }
 }
