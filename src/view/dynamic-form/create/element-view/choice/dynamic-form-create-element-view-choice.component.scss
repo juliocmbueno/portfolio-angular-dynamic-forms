@@ -1,4 +1,24 @@
 
+@import "src/assets/scss/variables";
+@import "src/assets/scss/mixins/breakpoints";
+
+.container-element-option{
+  width: 100%;
+}
+
+@include media-breakpoint-up($md){
+  .container-element-option{
+    width: 60%;
+  }
+}
+
+@include media-breakpoint-up($lg){
+  .container-element-option{
+    width: 40%;
+  }
+}
+
+
 .container-element-option .form-check-input{
   margin-top: .3rem;
 }

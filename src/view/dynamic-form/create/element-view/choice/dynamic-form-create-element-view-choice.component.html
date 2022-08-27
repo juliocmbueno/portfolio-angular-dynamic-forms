@@ -1,15 +1,17 @@
 <div class="container-element-option">
+  <label class="form-label">{{element.label ? element.label : 'New Element'}}<span class="required-mark" *ngIf="element.required">*</span></label>
+
   <div class="row element-option align-items-center" *ngFor="let option of element.options">
     <div class="col-auto align-self-center pe-0">
       <input
         class="form-check-input opacity-100"
-        type="radio"
-        name="radio"
+        [type]="type"
+        [name]="'choice-'+element.elementId.value"
         [value]="option.value"
         [id]="option.elementId.value"
         [disabled]="true">
     </div>
-    <div class="col col-md-8 col-lg-4 pe-0">
+    <div class="col pe-0">
       <app-input-text-editable-on-click
         #inputTextEditableOnClick
         [inputId]="'form-check-'+option.elementId.value"
@@ -23,8 +25,8 @@
         (onInput)="onInputValue($event, option)"
         (valueChange)="updateOption(option, $event)"></app-input-text-editable-on-click>
     </div>
-    <div class="col-auto pe-0 container-error-message">
-      <i class="fa-solid fa-triangle-exclamation text-danger error-message" [pTooltip]="exceptions[option.elementId.value]" *ngIf="exceptions[option.elementId.value]"></i>
+    <div class="col-auto pe-0 container-error-message" *ngIf="exceptions[option.elementId.value]">
+      <i class="fa-solid fa-triangle-exclamation text-danger error-message" [pTooltip]="exceptions[option.elementId.value]"></i>
     </div>
     <div class="col-auto" *ngIf="editable">
       <button
@@ -37,9 +39,13 @@
   </div>
   <div class="row element-option align-items-center" *ngIf="editable">
     <div class="col-auto align-self-center pe-0">
-      <input class="form-check-input opacity-100" type="radio" name="radio" [disabled]="true">
+      <input
+        class="form-check-input opacity-100"
+        [type]="type"
+        [name]="'choice-'+element.elementId.value"
+        [disabled]="true">
     </div>
-    <div class="col col-md-8 col-lg-4 pe-0" (click)="addOption()">
+    <div class="col pe-0" (click)="addOption()">
       Add new option
     </div>
   </div>

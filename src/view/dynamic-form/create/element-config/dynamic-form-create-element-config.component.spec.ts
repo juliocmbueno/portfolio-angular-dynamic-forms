@@ -3,6 +3,7 @@ import {TestBed} from '@angular/core/testing';
 import {DynamicFormCreateElementConfigComponent} from '@dynamic-forms/view/dynamic-form/create/element-config/dynamic-form-create-element-config.component';
 import {DynamicFormElement, DynamicFormTypes} from "@dynamic-forms/domain/dynamic-form-element";
 import {DynamicForm} from "@dynamic-forms/domain/dynamic-form";
+import {DynamicFormElementOption} from "@dynamic-forms/domain/dynamic-form-element-option";
 
 describe('DynamicFormCreateElementConfigComponent', () => {
   let component: DynamicFormCreateElementConfigComponent;
@@ -71,5 +72,17 @@ describe('DynamicFormCreateElementConfigComponent', () => {
 
     expect(component.form.elements.includes(element)).toBeFalse()
     expect(component.onRemove.emit).toHaveBeenCalledTimes(1);
+  });
+
+  it('should sanitize the element', () => {
+    const element = new DynamicFormElement('Element', DynamicFormTypes['RADIO']);
+    element.addOption(new DynamicFormElementOption('Option One'));
+    component.element = element;
+
+    const typeText = DynamicFormTypes['TEXT'];
+    spyOn(typeText, 'sanitizeElement');
+    component.onTypeChange(typeText);
+
+    expect(typeText.sanitizeElement).toHaveBeenCalledWith(element);
   });
 });

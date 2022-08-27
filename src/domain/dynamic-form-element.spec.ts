@@ -87,12 +87,38 @@ describe('DynamicFormTypes', () => {
     expect(dynamicFormElementType.icon).toEqual('fa-solid fa-grip-lines');
   });
 
+  it('should sanitize the element for TEXT', function () {
+    const dynamicFormElementType:DynamicFormElementType = DynamicFormTypes['TEXT'];
+
+    const element = new DynamicFormElement('', dynamicFormElementType);
+    element.addOption(new DynamicFormElementOption('Option 1'));
+
+    expect(element.options.length).toEqual(1);
+
+    dynamicFormElementType.sanitizeElement(element);
+
+    expect(element.options.length).toEqual(0);
+  });
+
   it('should be TEXTAREA', function () {
     const dynamicFormElementType:DynamicFormElementType = DynamicFormTypes['TEXTAREA'];
 
     expect(dynamicFormElementType.label).toEqual('Long Text');
     expect(dynamicFormElementType.elementType).toEqual('TEXTAREA');
     expect(dynamicFormElementType.icon).toEqual('fa-solid fa-align-left');
+  });
+
+  it('should sanitize the element for TEXT', function () {
+    const dynamicFormElementType:DynamicFormElementType = DynamicFormTypes['TEXTAREA'];
+
+    const element = new DynamicFormElement('', dynamicFormElementType);
+    element.addOption(new DynamicFormElementOption('Option 1'));
+
+    expect(element.options.length).toEqual(1);
+
+    dynamicFormElementType.sanitizeElement(element);
+
+    expect(element.options.length).toEqual(0);
   });
 
   it('should be RADIO', function () {
@@ -103,11 +129,45 @@ describe('DynamicFormTypes', () => {
     expect(dynamicFormElementType.icon).toEqual('fa-solid fa-circle-dot');
   });
 
+  it('should sanitize the element for RADIO', function () {
+    const dynamicFormElementType:DynamicFormElementType = DynamicFormTypes['RADIO'];
+
+    const element = new DynamicFormElement('Label', dynamicFormElementType);
+    element.required = true;
+    element.addOption(new DynamicFormElementOption('Option'));
+
+    const elementId = element.elementId;
+
+    dynamicFormElementType.sanitizeElement(element);
+
+    expect(element.label).toEqual('Label');
+    expect(element.required).toEqual(true);
+    expect(element.options.length).toEqual(1);
+    expect(element.elementId).toEqual(elementId);
+  });
+
   it('should be CHECKBOX', function () {
     const dynamicFormElementType:DynamicFormElementType = DynamicFormTypes['CHECKBOX'];
 
     expect(dynamicFormElementType.label).toEqual('Multiple Choice');
     expect(dynamicFormElementType.elementType).toEqual('CHECKBOX');
     expect(dynamicFormElementType.icon).toEqual('fa-solid fa-square-check');
+  });
+
+  it('should sanitize the element for CHECKBOX', function () {
+    const dynamicFormElementType:DynamicFormElementType = DynamicFormTypes['CHECKBOX'];
+
+    const element = new DynamicFormElement('Label', dynamicFormElementType);
+    element.required = true;
+    element.addOption(new DynamicFormElementOption('Option'));
+
+    const elementId = element.elementId;
+
+    dynamicFormElementType.sanitizeElement(element);
+
+    expect(element.label).toEqual('Label');
+    expect(element.required).toEqual(true);
+    expect(element.options.length).toEqual(1);
+    expect(element.elementId).toEqual(elementId);
   });
 });

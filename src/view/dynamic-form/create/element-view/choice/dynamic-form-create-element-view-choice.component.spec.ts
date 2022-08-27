@@ -1,21 +1,21 @@
 import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 
-import {DynamicFormCreateElementViewRadioComponent} from '@dynamic-forms/view/dynamic-form/create/element-view/radio/dynamic-form-create-element-view-radio.component';
+import {DynamicFormCreateElementViewChoiceComponent} from '@dynamic-forms/view/dynamic-form/create/element-view/choice/dynamic-form-create-element-view-choice.component';
 import {DynamicFormElement, DynamicFormTypes} from "@dynamic-forms/domain/dynamic-form-element";
 import {InputTextEditableOnClickComponent} from "@dynamic-forms/components/input-text-editable-on-click/input-text-editable-on-click.component";
 import {QueryList} from "@angular/core";
 import {FormBuilder} from "@angular/forms";
 
 describe('DynamicFormCreateElementViewRadioComponent', () => {
-  let component: DynamicFormCreateElementViewRadioComponent;
-  let fixture: ComponentFixture<DynamicFormCreateElementViewRadioComponent>;
+  let component: DynamicFormCreateElementViewChoiceComponent;
+  let fixture: ComponentFixture<DynamicFormCreateElementViewChoiceComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DynamicFormCreateElementViewRadioComponent]
+      declarations: [ DynamicFormCreateElementViewChoiceComponent]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(DynamicFormCreateElementViewRadioComponent);
+    fixture = TestBed.createComponent(DynamicFormCreateElementViewChoiceComponent);
     component = fixture.componentInstance;
     component.element = new DynamicFormElement('Radio Element', DynamicFormTypes['RADIO']);
 

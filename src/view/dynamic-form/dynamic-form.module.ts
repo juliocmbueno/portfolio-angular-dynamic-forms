@@ -14,8 +14,7 @@ import {InputSwitchModule} from "primeng/inputswitch";
 import {DynamicFormCreateElementConfigComponent} from './create/element-config/dynamic-form-create-element-config.component';
 import {DynamicFormCreateElementViewTextComponent} from './create/element-view/text/dynamic-form-create-element-view-text.component';
 import {DynamicFormCreateElementViewTextareaComponent} from './create/element-view/textarea/dynamic-form-create-element-view-textarea.component';
-import {DynamicFormCreateElementViewCheckboxComponent} from './create/element-view/checkbox/dynamic-form-create-element-view-checkbox.component';
-import {DynamicFormCreateElementViewRadioComponent} from './create/element-view/radio/dynamic-form-create-element-view-radio.component';
+import {DynamicFormCreateElementViewChoiceComponent} from './create/element-view/choice/dynamic-form-create-element-view-choice.component';
 import {InputTextEditableOnClickModule} from "@dynamic-forms/components/input-text-editable-on-click/input-text-editable-on-click.module";
 import {InputTextareaEditableOnClickModule} from "@dynamic-forms/components/input-textarea-editable-on-click/input-textarea-editable-on-click.module";
 
@@ -28,8 +27,7 @@ import {InputTextareaEditableOnClickModule} from "@dynamic-forms/components/inpu
     DynamicFormCreateElementConfigComponent,
     DynamicFormCreateElementViewTextComponent,
     DynamicFormCreateElementViewTextareaComponent,
-    DynamicFormCreateElementViewCheckboxComponent,
-    DynamicFormCreateElementViewRadioComponent
+    DynamicFormCreateElementViewChoiceComponent
   ],
     imports: [
         CommonModule,

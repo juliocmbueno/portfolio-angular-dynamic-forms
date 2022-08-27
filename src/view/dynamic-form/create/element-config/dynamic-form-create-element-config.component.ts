@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {DynamicFormElement, DynamicFormElementType, DynamicFormTypes} from "@dynamic-forms/domain/dynamic-form-element";
 import {DynamicForm} from "@dynamic-forms/domain/dynamic-form";
+import {MultiSelectItem} from "primeng/multiselect";
 
 @Component({
   selector: 'app-dynamic-form-create-element-config',
@@ -25,6 +26,7 @@ export class DynamicFormCreateElementConfigComponent implements OnInit {
   }
 
   private initTypes(): void{
+
     this.types = Object.keys(DynamicFormTypes).map(key => DynamicFormTypes[key]);
   }
 
@@ -42,6 +44,7 @@ export class DynamicFormCreateElementConfigComponent implements OnInit {
   }
 
   private addNewElement():void{
+    MultiSelectItem
     const element = new DynamicFormElement('', DynamicFormTypes['TEXT']);
     this.form.addElement(element);
     this.editNext.emit(element);
@@ -51,5 +54,9 @@ export class DynamicFormCreateElementConfigComponent implements OnInit {
     const closer = this.form.nextElementOf(this.element) || this.form.previousElementOf(this.element);
     this.form.removeElement(this.element);
     this.onRemove.emit(closer);
+  }
+
+  public onTypeChange(type: DynamicFormElementType):void{
+    type.sanitizeElement(this.element);
   }
 }

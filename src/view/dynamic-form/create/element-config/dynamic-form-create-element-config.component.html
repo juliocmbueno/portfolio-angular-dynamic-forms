@@ -9,8 +9,13 @@
     <input type="text" class="form-control" id="{{'config-element-title-'+element.elementId.value}}" placeholder="Element Title" [(ngModel)]="element.label">
   </div>
 
-  <div class="config-type col-12 col-md-auto pb-1 pb-md-0">
-    <p-dropdown [options]="types" [style]="{minWidth: '200px'}" [(ngModel)]="element.type" placeholder="Select a Country">
+  <div class="config-type col-12 col-md-5 col-lg-4 pb-1 pb-md-0">
+    <p-dropdown
+      [options]="types"
+      [style]="{minWidth: '200px'}"
+      [(ngModel)]="element.type"
+      (onChange)="onTypeChange($event.value)"
+      placeholder="Select a Country">
       <ng-template pTemplate="selectedItem">
         <div class="row">
           <div class="col-auto"><i [className]="element.type.icon"></i></div>

@@ -14,8 +14,6 @@
       (editNext)="edit($event)"></app-dynamic-form-create-element-config>
 
     <div>
-      <label class="form-label">{{element.label ? element.label : 'New Element'}}<span class="required-mark" *ngIf="element.required">*</span></label>
-
       <div [ngSwitch]="element.type.elementType">
         <ng-container *ngSwitchCase="typeText">
           <app-dynamic-form-create-element-view-text
@@ -26,13 +24,16 @@
             [element]="element"></app-dynamic-form-create-element-view-textarea>
         </ng-container>
         <ng-container *ngSwitchCase="typeRadio">
-          <app-dynamic-form-create-element-view-radio
+          <app-dynamic-form-create-element-view-choice
+            type="radio"
             [element]="element"
-            [editable]="editableElement === element"></app-dynamic-form-create-element-view-radio>
+            [editable]="editableElement === element"></app-dynamic-form-create-element-view-choice>
         </ng-container>
         <ng-container *ngSwitchCase="typeCheckbox">
-          <app-dynamic-form-create-element-view-checkbox
-            [element]="element"></app-dynamic-form-create-element-view-checkbox>
+          <app-dynamic-form-create-element-view-choice
+            type="checkbox"
+            [element]="element"
+            [editable]="editableElement === element"></app-dynamic-form-create-element-view-choice>
         </ng-container>
       </div>
     </div>

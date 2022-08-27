@@ -4,14 +4,14 @@ import {InputTextEditableOnClickComponent} from "@dynamic-forms/components/input
 import {DynamicFormElementOption} from "@dynamic-forms/domain/dynamic-form-element-option";
 
 @Component({
-  selector: 'app-dynamic-form-create-element-view-radio',
-  templateUrl: './dynamic-form-create-element-view-radio.component.html',
-  styleUrls: ['./dynamic-form-create-element-view-radio.component.scss']
+  selector: 'app-dynamic-form-create-element-view-choice',
+  templateUrl: './dynamic-form-create-element-view-choice.component.html',
+  styleUrls: ['./dynamic-form-create-element-view-choice.component.scss']
 })
-export class DynamicFormCreateElementViewRadioComponent {
+export class DynamicFormCreateElementViewChoiceComponent {
 
   @Input() element!: DynamicFormElement;
-
+  @Input() type!: 'radio' | 'checkbox';
   @Input() editable:boolean = false;
 
   @ViewChildren('inputTextEditableOnClick') inputsEditable!: QueryList<InputTextEditableOnClickComponent>;

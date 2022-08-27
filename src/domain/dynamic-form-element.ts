@@ -48,28 +48,38 @@ export class DynamicFormElement {
 export interface DynamicFormElementType {
   label: string,
   elementType: DynamicFormElementTypeValue,
-  icon: string
+  icon: string,
+
+  sanitizeElement(element: DynamicFormElement): void
 }
 
 export const DynamicFormTypes: {[key:string]:DynamicFormElementType} = {
   'TEXT': {
     label: 'Short Text',
     elementType: 'TEXT',
-    icon: 'fa-solid fa-grip-lines'
+    icon: 'fa-solid fa-grip-lines',
+    sanitizeElement(element: DynamicFormElement) {
+      element.options = [];
+    }
   },
   'TEXTAREA': {
     label: 'Long Text',
     elementType: 'TEXTAREA',
-    icon: 'fa-solid fa-align-left'
+    icon: 'fa-solid fa-align-left',
+    sanitizeElement(element: DynamicFormElement) {
+      element.options = [];
+    }
   },
   'RADIO': {
     label: 'Single Choice',
     elementType: 'RADIO',
-    icon: 'fa-solid fa-circle-dot'
+    icon: 'fa-solid fa-circle-dot',
+    sanitizeElement(element: DynamicFormElement) {}
   },
   'CHECKBOX': {
     label: 'Multiple Choice',
     elementType: 'CHECKBOX',
-    icon: 'fa-solid fa-square-check'
+    icon: 'fa-solid fa-square-check',
+    sanitizeElement(element: DynamicFormElement) {}
   }
 }

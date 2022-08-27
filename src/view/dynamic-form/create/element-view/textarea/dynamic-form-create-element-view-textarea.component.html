@@ -1,4 +1,5 @@
 
+<label class="form-label">{{element.label ? element.label : 'New Element'}}<span class="required-mark" *ngIf="element.required">*</span></label>
 <textarea
   class="form-control resize-none"
   value="{{element.type.label}}"
