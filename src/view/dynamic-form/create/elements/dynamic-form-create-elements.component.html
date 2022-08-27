@@ -35,6 +35,10 @@
             [element]="element"
             [editable]="editableElement === element"></app-dynamic-form-create-element-view-choice>
         </ng-container>
+        <ng-container *ngSwitchCase="typeSession">
+          <app-dynamic-form-create-element-view-session
+            [element]="element"></app-dynamic-form-create-element-view-session>
+        </ng-container>
       </div>
     </div>
   </div>

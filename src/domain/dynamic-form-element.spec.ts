@@ -3,7 +3,7 @@ import {DynamicFormElementOption} from "@dynamic-forms/domain/dynamic-form-eleme
 
 describe('DynamicFormElement', () => {
   it('should create', function () {
-    const element = new DynamicFormElement('Name', DynamicFormTypes['TEXT']);
+    const element = new DynamicFormElement('Name', DynamicFormTypes.TEXT);
 
     expect(element).toBeTruthy();
     expect(element.elementId).toBeTruthy();
@@ -13,7 +13,7 @@ describe('DynamicFormElement', () => {
   });
 
   it('should add some option', function () {
-    const element = new DynamicFormElement('Name', DynamicFormTypes['TEXT']);
+    const element = new DynamicFormElement('Name', DynamicFormTypes.TEXT);
     const option = new DynamicFormElementOption('Option 1');
 
     element.addOption(option);
@@ -22,7 +22,7 @@ describe('DynamicFormElement', () => {
   });
 
   it('should remove option', function () {
-    const element = new DynamicFormElement('Name', DynamicFormTypes['TEXT']);
+    const element = new DynamicFormElement('Name', DynamicFormTypes.TEXT);
 
     const option_1 = new DynamicFormElementOption('Option 1');
     element.addOption(option_1);
@@ -41,7 +41,7 @@ describe('DynamicFormElement', () => {
   });
 
   it('should return next option', function () {
-    const element = new DynamicFormElement('Name', DynamicFormTypes['TEXT']);
+    const element = new DynamicFormElement('Name', DynamicFormTypes.TEXT);
 
     const previous = new DynamicFormElementOption('Previous');
     element.addOption(previous);
@@ -55,7 +55,7 @@ describe('DynamicFormElement', () => {
   });
 
   it('should return previous option', function () {
-    const element = new DynamicFormElement('Name', DynamicFormTypes['TEXT']);
+    const element = new DynamicFormElement('Name', DynamicFormTypes.TEXT);
 
     const next = new DynamicFormElementOption('Next');
     expect(element.previousOptionOf(next)).toBeFalsy();
@@ -68,7 +68,7 @@ describe('DynamicFormElement', () => {
   });
 
   it('should return index of option', function () {
-    const element = new DynamicFormElement('Name', DynamicFormTypes['TEXT']);
+    const element = new DynamicFormElement('Name', DynamicFormTypes.TEXT);
 
     const option = new DynamicFormElementOption('Option');
     expect(element.indexOf(option)).toEqual(-1);
@@ -80,65 +80,62 @@ describe('DynamicFormElement', () => {
 
 describe('DynamicFormTypes', () => {
   it('should be TEXT', function () {
-    const dynamicFormElementType:DynamicFormElementType = DynamicFormTypes['TEXT'];
+    const dynamicFormElementType:DynamicFormElementType = DynamicFormTypes.TEXT;
 
     expect(dynamicFormElementType.label).toEqual('Short Text');
     expect(dynamicFormElementType.elementType).toEqual('TEXT');
-    expect(dynamicFormElementType.icon).toEqual('fa-solid fa-grip-lines');
+    expect(dynamicFormElementType.icon).toEqual('fa-solid fa-grip-lines')
+    expect(dynamicFormElementType.showRequired).toBeTrue();
   });
 
   it('should sanitize the element for TEXT', function () {
-    const dynamicFormElementType:DynamicFormElementType = DynamicFormTypes['TEXT'];
-
-    const element = new DynamicFormElement('', dynamicFormElementType);
+    const element = new DynamicFormElement('', DynamicFormTypes.TEXT);
     element.addOption(new DynamicFormElementOption('Option 1'));
 
     expect(element.options.length).toEqual(1);
 
-    dynamicFormElementType.sanitizeElement(element);
+    DynamicFormTypes.TEXT.sanitizeElement(element);
 
     expect(element.options.length).toEqual(0);
   });
 
   it('should be TEXTAREA', function () {
-    const dynamicFormElementType:DynamicFormElementType = DynamicFormTypes['TEXTAREA'];
+    const dynamicFormElementType:DynamicFormElementType = DynamicFormTypes.TEXTAREA;
 
     expect(dynamicFormElementType.label).toEqual('Long Text');
     expect(dynamicFormElementType.elementType).toEqual('TEXTAREA');
     expect(dynamicFormElementType.icon).toEqual('fa-solid fa-align-left');
+    expect(dynamicFormElementType.showRequired).toBeTrue();
   });
 
   it('should sanitize the element for TEXT', function () {
-    const dynamicFormElementType:DynamicFormElementType = DynamicFormTypes['TEXTAREA'];
-
-    const element = new DynamicFormElement('', dynamicFormElementType);
+    const element = new DynamicFormElement('', DynamicFormTypes.TEXTAREA);
     element.addOption(new DynamicFormElementOption('Option 1'));
 
     expect(element.options.length).toEqual(1);
 
-    dynamicFormElementType.sanitizeElement(element);
+    DynamicFormTypes.TEXTAREA.sanitizeElement(element);
 
     expect(element.options.length).toEqual(0);
   });
 
   it('should be RADIO', function () {
-    const dynamicFormElementType:DynamicFormElementType = DynamicFormTypes['RADIO'];
+    const dynamicFormElementType:DynamicFormElementType = DynamicFormTypes.RADIO;
 
     expect(dynamicFormElementType.label).toEqual('Single Choice');
     expect(dynamicFormElementType.elementType).toEqual('RADIO');
     expect(dynamicFormElementType.icon).toEqual('fa-solid fa-circle-dot');
+    expect(dynamicFormElementType.showRequired).toBeTrue();
   });
 
   it('should sanitize the element for RADIO', function () {
-    const dynamicFormElementType:DynamicFormElementType = DynamicFormTypes['RADIO'];
-
-    const element = new DynamicFormElement('Label', dynamicFormElementType);
+    const element = new DynamicFormElement('Label', DynamicFormTypes.RADIO);
     element.required = true;
     element.addOption(new DynamicFormElementOption('Option'));
 
     const elementId = element.elementId;
 
-    dynamicFormElementType.sanitizeElement(element);
+    DynamicFormTypes.RADIO.sanitizeElement(element);
 
     expect(element.label).toEqual('Label');
     expect(element.required).toEqual(true);
@@ -147,27 +144,46 @@ describe('DynamicFormTypes', () => {
   });
 
   it('should be CHECKBOX', function () {
-    const dynamicFormElementType:DynamicFormElementType = DynamicFormTypes['CHECKBOX'];
+    const dynamicFormElementType:DynamicFormElementType = DynamicFormTypes.CHECKBOX;
 
     expect(dynamicFormElementType.label).toEqual('Multiple Choice');
     expect(dynamicFormElementType.elementType).toEqual('CHECKBOX');
     expect(dynamicFormElementType.icon).toEqual('fa-solid fa-square-check');
+    expect(dynamicFormElementType.showRequired).toBeTrue();
   });
 
   it('should sanitize the element for CHECKBOX', function () {
-    const dynamicFormElementType:DynamicFormElementType = DynamicFormTypes['CHECKBOX'];
-
-    const element = new DynamicFormElement('Label', dynamicFormElementType);
+    const element = new DynamicFormElement('Label', DynamicFormTypes.CHECKBOX);
     element.required = true;
     element.addOption(new DynamicFormElementOption('Option'));
 
     const elementId = element.elementId;
 
-    dynamicFormElementType.sanitizeElement(element);
+    DynamicFormTypes.CHECKBOX.sanitizeElement(element);
 
     expect(element.label).toEqual('Label');
     expect(element.required).toEqual(true);
     expect(element.options.length).toEqual(1);
     expect(element.elementId).toEqual(elementId);
+  });
+
+  it('should be SESSION', function () {
+    const dynamicFormElementType:DynamicFormElementType = DynamicFormTypes.SESSION;
+
+    expect(dynamicFormElementType.label).toEqual('Session');
+    expect(dynamicFormElementType.elementType).toEqual('SESSION');
+    expect(dynamicFormElementType.icon).toEqual('fa-solid fa-minus');
+    expect(dynamicFormElementType.showRequired).toBeFalse();
+  });
+
+  it('should sanitize the element for SESSION', function () {
+    const element = new DynamicFormElement('Label', DynamicFormTypes.SESSION);
+    element.required = true;
+    element.addOption(new DynamicFormElementOption('Option'));
+
+    DynamicFormTypes.SESSION.sanitizeElement(element);
+
+    expect(element.required).toBeFalse();
+    expect(element.options.length).toBe(0);
   });
 });

@@ -22,14 +22,14 @@ describe('DynamicFormCreateElementsComponent', () => {
   });
 
   it('should edit element', () => {
-    const element = new DynamicFormElement('Field', DynamicFormTypes['TEXT']);
+    const element = new DynamicFormElement('Field', DynamicFormTypes.TEXT);
     component.edit(element);
 
     expect(component.editableElement).toBe(element);
   });
 
   it('should remove element', () => {
-    const element = new DynamicFormElement('Field', DynamicFormTypes['TEXT']);
+    const element = new DynamicFormElement('Field', DynamicFormTypes.TEXT);
     component.form.addElement(element);
 
     component.remove(element);
@@ -38,8 +38,8 @@ describe('DynamicFormCreateElementsComponent', () => {
   });
 
   it('should edit next element if exists after delete', () => {
-    const previousElement = new DynamicFormElement('Previous', DynamicFormTypes['TEXT']);
-    const nextElement = new DynamicFormElement('Next', DynamicFormTypes['TEXT']);
+    const previousElement = new DynamicFormElement('Previous', DynamicFormTypes.TEXT);
+    const nextElement = new DynamicFormElement('Next', DynamicFormTypes.TEXT);
 
     component.form.addElement(previousElement);
     component.form.addElement(nextElement);
@@ -50,8 +50,8 @@ describe('DynamicFormCreateElementsComponent', () => {
   });
 
   it('should edit previous element if next element not exists but previous yes', () => {
-    const previousElement = new DynamicFormElement('Previous', DynamicFormTypes['TEXT']);
-    const nextElement = new DynamicFormElement('Next', DynamicFormTypes['TEXT']);
+    const previousElement = new DynamicFormElement('Previous', DynamicFormTypes.TEXT);
+    const nextElement = new DynamicFormElement('Next', DynamicFormTypes.TEXT);
 
     component.form.addElement(previousElement);
     component.form.addElement(nextElement);

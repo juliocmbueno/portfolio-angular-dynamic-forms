@@ -17,7 +17,7 @@ describe('DynamicFormCreateElementViewRadioComponent', () => {
 
     fixture = TestBed.createComponent(DynamicFormCreateElementViewChoiceComponent);
     component = fixture.componentInstance;
-    component.element = new DynamicFormElement('Radio Element', DynamicFormTypes['RADIO']);
+    component.element = new DynamicFormElement('Radio Element', DynamicFormTypes.RADIO);
 
     component.inputsEditable = new QueryList<InputTextEditableOnClickComponent>();
     component.inputsEditable.reset([new InputTextEditableOnClickComponent(new FormBuilder())]);

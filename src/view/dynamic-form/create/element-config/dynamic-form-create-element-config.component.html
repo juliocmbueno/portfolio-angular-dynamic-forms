@@ -14,6 +14,7 @@
       [options]="types"
       [style]="{minWidth: '200px'}"
       [(ngModel)]="element.type"
+      [group]="true"
       (onChange)="onTypeChange($event.value)"
       placeholder="Select a Country">
       <ng-template pTemplate="selectedItem">
@@ -24,14 +25,14 @@
       </ng-template>
       <ng-template let-type pTemplate="item">
         <div class="row">
-          <div class="col-auto"><i [className]="type.icon"></i></div>
-          <div class="col-auto">{{type.label}}</div>
+          <div class="col-auto"><i [className]="type.value.icon"></i></div>
+          <div class="col-auto">{{type.value.label}}</div>
         </div>
       </ng-template>
     </p-dropdown>
   </div>
 
-  <div class="config-required col-12 col-md-auto pb-1 pb-md-0 text-end">
+  <div class="config-required col-12 col-md-auto pb-1 pb-md-0 text-end" [class.hidden]="!element.type.showRequired">
     <div class="d-flex align-items-center justify-content-end">
       <label for="{{'element-required-'+element.elementId.value}}" class="me-2">Required</label>
       <p-inputSwitch styleClass="light" inputId="{{'element-required-'+element.elementId.value}}" [(ngModel)]="element.required"></p-inputSwitch>

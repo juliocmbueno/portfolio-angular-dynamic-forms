@@ -17,6 +17,7 @@ export class DynamicFormCreateElementsComponent {
   readonly typeTextarea: DynamicFormElementTypeValue = 'TEXTAREA';
   readonly typeRadio: DynamicFormElementTypeValue = 'RADIO';
   readonly typeCheckbox: DynamicFormElementTypeValue = 'CHECKBOX';
+  readonly typeSession: DynamicFormElementTypeValue = 'SESSION';
 
   constructor() {}
 

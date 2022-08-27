@@ -30,3 +30,17 @@
 .btn:HOVER, .btn:focus {
   background-color: rgba(255, 255, 255, .2);
 }
+
+.config-required{
+  width: 143.18px;
+  opacity: 1;
+  visibility: visible;
+  transition: .3s width ease-out, .3s opacity ease-out, .3s padding ease-out;
+}
+
+.config-required.hidden{
+  padding: 0;
+  width: 0;
+  opacity: 0;
+  visibility: hidden;
+}

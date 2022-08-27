@@ -1,0 +1,20 @@
+
+@import "src/assets/scss/variables";
+@import "src/assets/scss/mixins";
+
+.container-element-session span{
+  border-bottom: .2rem solid $jb-primary;
+  font-size: 1.5rem;
+  font-weight: 600;
+  display: block;
+  padding-left: .5rem;
+  transition: .3s font-size ease-out;
+}
+
+@include media-breakpoint-up($md){
+  .container-element-session span{
+    border-bottom: .3rem solid $jb-primary;
+    font-size: 2rem;
+  }
+}
+

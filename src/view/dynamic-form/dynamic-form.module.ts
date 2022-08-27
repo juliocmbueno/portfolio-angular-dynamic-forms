@@ -17,6 +17,7 @@ import {DynamicFormCreateElementViewTextareaComponent} from './create/element-vi
 import {DynamicFormCreateElementViewChoiceComponent} from './create/element-view/choice/dynamic-form-create-element-view-choice.component';
 import {InputTextEditableOnClickModule} from "@dynamic-forms/components/input-text-editable-on-click/input-text-editable-on-click.module";
 import {InputTextareaEditableOnClickModule} from "@dynamic-forms/components/input-textarea-editable-on-click/input-textarea-editable-on-click.module";
+import {DynamicFormCreateElementViewSessionComponent} from './create/element-view/session/dynamic-form-create-element-view-session.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {InputTextareaEditableOnClickModule} from "@dynamic-forms/components/inpu
     DynamicFormCreateElementConfigComponent,
     DynamicFormCreateElementViewTextComponent,
     DynamicFormCreateElementViewTextareaComponent,
-    DynamicFormCreateElementViewChoiceComponent
+    DynamicFormCreateElementViewChoiceComponent,
+    DynamicFormCreateElementViewSessionComponent
   ],
     imports: [
         CommonModule,

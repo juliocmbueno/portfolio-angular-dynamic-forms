@@ -1,8 +1,18 @@
 
+@import "src/assets/scss/variables";
+
 .p-dropdown{
   width: 100%;
 }
 
 .p-dropdown .p-dropdown-label{
   padding: .4rem;
+}
+
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item-group{
+  color: $jb-color;
+}
+
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item:not(.p-highlight):not(.p-disabled):hover{
+  color: $jb-color;
 }

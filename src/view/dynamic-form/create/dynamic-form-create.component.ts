@@ -30,7 +30,7 @@ export class DynamicFormCreateComponent implements OnInit {
   }
 
   public addNewElement():void{
-    const element = new DynamicFormElement('', DynamicFormTypes['TEXT']);
+    const element = new DynamicFormElement('', DynamicFormTypes.TEXT);
     this.form.addElement(element);
     this.createElementsComponent.edit(element);
   }

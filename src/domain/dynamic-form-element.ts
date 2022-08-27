@@ -1,7 +1,7 @@
 import {DynamicFormElementOption} from "@dynamic-forms/domain/dynamic-form-element-option";
 import {Uuid} from "@dynamic-forms/domain/uuid";
 
-export type DynamicFormElementTypeValue = 'TEXT'|'TEXTAREA'|'RADIO'|'CHECKBOX';
+export type DynamicFormElementTypeValue = 'TEXT'|'TEXTAREA'|'RADIO'|'CHECKBOX'|'SESSION';
 
 export class DynamicFormElement {
   label: string | undefined;
@@ -49,15 +49,17 @@ export interface DynamicFormElementType {
   label: string,
   elementType: DynamicFormElementTypeValue,
   icon: string,
+  showRequired:boolean;
 
   sanitizeElement(element: DynamicFormElement): void
 }
 
-export const DynamicFormTypes: {[key:string]:DynamicFormElementType} = {
+export const DynamicFormTypes: { [TYPE in DynamicFormElementTypeValue]: DynamicFormElementType; } = {
   'TEXT': {
     label: 'Short Text',
     elementType: 'TEXT',
     icon: 'fa-solid fa-grip-lines',
+    showRequired: true,
     sanitizeElement(element: DynamicFormElement) {
       element.options = [];
     }
@@ -66,6 +68,7 @@ export const DynamicFormTypes: {[key:string]:DynamicFormElementType} = {
     label: 'Long Text',
     elementType: 'TEXTAREA',
     icon: 'fa-solid fa-align-left',
+    showRequired: true,
     sanitizeElement(element: DynamicFormElement) {
       element.options = [];
     }
@@ -74,12 +77,24 @@ export const DynamicFormTypes: {[key:string]:DynamicFormElementType} = {
     label: 'Single Choice',
     elementType: 'RADIO',
     icon: 'fa-solid fa-circle-dot',
+    showRequired: true,
     sanitizeElement(element: DynamicFormElement) {}
   },
   'CHECKBOX': {
     label: 'Multiple Choice',
     elementType: 'CHECKBOX',
     icon: 'fa-solid fa-square-check',
+    showRequired: true,
     sanitizeElement(element: DynamicFormElement) {}
+  },
+  'SESSION': {
+    label: 'Session',
+    elementType: 'SESSION',
+    icon: 'fa-solid fa-minus',
+    showRequired: false,
+    sanitizeElement(element: DynamicFormElement) {
+      element.options = [];
+      element.required = false;
+    }
   }
 }

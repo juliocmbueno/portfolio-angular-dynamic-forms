@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {DynamicFormElement, DynamicFormElementType, DynamicFormTypes} from "@dynamic-forms/domain/dynamic-form-element";
 import {DynamicForm} from "@dynamic-forms/domain/dynamic-form";
 import {MultiSelectItem} from "primeng/multiselect";
+import {SelectItemGroup} from "primeng/api";
 
 @Component({
   selector: 'app-dynamic-form-create-element-config',
@@ -17,7 +18,7 @@ export class DynamicFormCreateElementConfigComponent implements OnInit {
   @Output() onRemove: EventEmitter<DynamicFormElement> = new EventEmitter<DynamicFormElement>();
   @Output() editNext: EventEmitter<DynamicFormElement> = new EventEmitter<DynamicFormElement>();
 
-  types: DynamicFormElementType[] = [];
+  types: SelectItemGroup[] = [];
 
   constructor() { }
 
@@ -26,8 +27,28 @@ export class DynamicFormCreateElementConfigComponent implements OnInit {
   }
 
   private initTypes(): void{
-
-    this.types = Object.keys(DynamicFormTypes).map(key => DynamicFormTypes[key]);
+    this.types = [
+      {
+        label: 'Text',
+        items: [
+          {label: DynamicFormTypes.TEXT.label, value: DynamicFormTypes.TEXT},
+          {label: DynamicFormTypes.TEXTAREA.label, value: DynamicFormTypes.TEXTAREA}
+        ]
+      },
+      {
+        label: 'Choice',
+        items: [
+          {label: DynamicFormTypes.CHECKBOX.label, value: DynamicFormTypes.CHECKBOX},
+          {label: DynamicFormTypes.RADIO.label, value: DynamicFormTypes.RADIO}
+        ]
+      },
+      {
+        label: 'Other',
+        items: [
+          {label: DynamicFormTypes.SESSION.label, value: DynamicFormTypes.SESSION}
+        ]
+      },
+    ];
   }
 
   public onDeleteButtonTab(event: Event):void{
@@ -45,7 +66,7 @@ export class DynamicFormCreateElementConfigComponent implements OnInit {
 
   private addNewElement():void{
     MultiSelectItem
-    const element = new DynamicFormElement('', DynamicFormTypes['TEXT']);
+    const element = new DynamicFormElement('', DynamicFormTypes.TEXT);
     this.form.addElement(element);
     this.editNext.emit(element);
   }

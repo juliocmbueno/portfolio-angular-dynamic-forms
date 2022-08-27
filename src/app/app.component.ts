@@ -13,7 +13,7 @@ export class AppComponent {
 
   constructor(){
     this.form = new DynamicForm('Test DynamicForm');
-    this.form.addElement(new DynamicFormElement('DynamicFormElement One', DynamicFormTypes['TEXT']))
+    this.form.addElement(new DynamicFormElement('DynamicFormElement One', DynamicFormTypes.TEXT))
   }
 
 }

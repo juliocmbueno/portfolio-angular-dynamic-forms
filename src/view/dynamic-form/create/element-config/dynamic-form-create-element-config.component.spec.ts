@@ -30,11 +30,11 @@ describe('DynamicFormCreateElementConfigComponent', () => {
     spyOn(component.editNext, 'emit');
     component.form = new DynamicForm('DynamicFormCreateElementConfigComponent');
 
-    const previousElement = new DynamicFormElement('Previous', DynamicFormTypes['TEXT']);
+    const previousElement = new DynamicFormElement('Previous', DynamicFormTypes.TEXT);
     component.form.addElement(previousElement);
     component.element = previousElement;
 
-    const nextElement = new DynamicFormElement('Next', DynamicFormTypes['TEXT']);
+    const nextElement = new DynamicFormElement('Next', DynamicFormTypes.TEXT);
     component.form.addElement(nextElement);
 
     component.onDeleteButtonTab(new Event(''));
@@ -47,7 +47,7 @@ describe('DynamicFormCreateElementConfigComponent', () => {
 
     component.form = new DynamicForm('DynamicFormCreateElementConfigComponent');
 
-    const previousElement = new DynamicFormElement('Previous', DynamicFormTypes['TEXT']);
+    const previousElement = new DynamicFormElement('Previous', DynamicFormTypes.TEXT);
     component.form.addElement(previousElement);
     component.element = previousElement;
 
@@ -64,7 +64,7 @@ describe('DynamicFormCreateElementConfigComponent', () => {
 
     component.form = new DynamicForm('DynamicFormCreateElementConfigComponent');
 
-    const element = new DynamicFormElement('Element', DynamicFormTypes['TEXT']);
+    const element = new DynamicFormElement('Element', DynamicFormTypes.TEXT);
     component.form.addElement(element);
     component.element = element;
 
@@ -75,11 +75,11 @@ describe('DynamicFormCreateElementConfigComponent', () => {
   });
 
   it('should sanitize the element', () => {
-    const element = new DynamicFormElement('Element', DynamicFormTypes['RADIO']);
+    const element = new DynamicFormElement('Element', DynamicFormTypes.RADIO);
     element.addOption(new DynamicFormElementOption('Option One'));
     component.element = element;
 
-    const typeText = DynamicFormTypes['TEXT'];
+    const typeText = DynamicFormTypes.TEXT;
     spyOn(typeText, 'sanitizeElement');
     component.onTypeChange(typeText);
 
