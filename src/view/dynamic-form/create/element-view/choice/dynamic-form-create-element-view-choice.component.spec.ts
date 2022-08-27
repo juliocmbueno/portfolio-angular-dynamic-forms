@@ -18,6 +18,7 @@ describe('DynamicFormCreateElementViewRadioComponent', () => {
     fixture = TestBed.createComponent(DynamicFormCreateElementViewChoiceComponent);
     component = fixture.componentInstance;
     component.element = new DynamicFormElement('Radio Element', DynamicFormTypes.RADIO);
+    component.ngOnInit();
 
     component.inputsEditable = new QueryList<InputTextEditableOnClickComponent>();
     component.inputsEditable.reset([new InputTextEditableOnClickComponent(new FormBuilder())]);
@@ -38,6 +39,22 @@ describe('DynamicFormCreateElementViewRadioComponent', () => {
       expect(component.inputsEditable.last.editable).toBeTrue();
     });
   }));
+
+  it('should add new option without duplicate name when nameAux is not correct', () => {
+    component.addOption();
+    component.addOption();
+
+    expect(component.element.options.length).toEqual(2);
+    expect(component.nameAux).toEqual(3);
+
+    component.nameAux = 1;
+
+    component.addOption();
+
+    const option = component.element.options[2];
+    expect(option.value).toEqual('New Option 3');
+    expect(component.nameAux).toEqual(4);
+  });
 
   it('should update option value', () => {
     component.addOption();

@@ -1,4 +1,4 @@
-import {Component, Input, QueryList, ViewChildren} from '@angular/core';
+import {Component, Input, OnInit, QueryList, ViewChildren} from '@angular/core';
 import {DynamicFormElement} from "@dynamic-forms/domain/dynamic-form-element";
 import {InputTextEditableOnClickComponent} from "@dynamic-forms/components/input-text-editable-on-click/input-text-editable-on-click.component";
 import {DynamicFormElementOption} from "@dynamic-forms/domain/dynamic-form-element-option";
@@ -8,7 +8,7 @@ import {DynamicFormElementOption} from "@dynamic-forms/domain/dynamic-form-eleme
   templateUrl: './dynamic-form-create-element-view-choice.component.html',
   styleUrls: ['./dynamic-form-create-element-view-choice.component.scss']
 })
-export class DynamicFormCreateElementViewChoiceComponent {
+export class DynamicFormCreateElementViewChoiceComponent implements OnInit{
 
   @Input() element!: DynamicFormElement;
   @Input() type!: 'radio' | 'checkbox';
@@ -17,7 +17,15 @@ export class DynamicFormCreateElementViewChoiceComponent {
   @ViewChildren('inputTextEditableOnClick') inputsEditable!: QueryList<InputTextEditableOnClickComponent>;
 
   exceptions: {[key:string]: string} = {};
-  nameAux:number = 1;
+  nameAux!:number;
+
+  ngOnInit() {
+    this.initNameAux();
+  }
+
+  private initNameAux():void {
+    this.nameAux = this.element.options.length + 1;
+  }
 
   public addOption(): void{
     const newOption = new DynamicFormElementOption(this.getNewOptionName());
@@ -26,7 +34,13 @@ export class DynamicFormCreateElementViewChoiceComponent {
   }
 
   private getNewOptionName():string{
-    return `New Option ${this.nameAux++}`;
+    let newOptionName = `New Option ${this.nameAux++}`;
+
+    while(this.isDuplicatedValue(newOptionName, null)){
+      newOptionName = `New Option ${this.nameAux++}`;
+    }
+
+    return newOptionName;
   }
 
   public updateOption(option: DynamicFormElementOption, newOptionValue: string): void{
@@ -102,13 +116,15 @@ export class DynamicFormCreateElementViewChoiceComponent {
   public onInputValue(value:string, option: DynamicFormElementOption):void{
     delete this.exceptions[option.elementId.value];
 
-    const duplicatedValue = this.element.options
+    if(this.isDuplicatedValue(value, option)){
+      this.exceptions[option.elementId.value] = 'Duplicated Value';
+    }
+  }
+
+  private isDuplicatedValue(value:string, option: DynamicFormElementOption | null):boolean {
+    return this.element.options
       .filter(optionTemp => optionTemp != option)
       .map(optionTemp => optionTemp.value)
       .some(valueTemp => valueTemp?.toLocaleLowerCase() === value?.toLowerCase());
-
-    if(duplicatedValue){
-      this.exceptions[option.elementId.value] = 'Duplicated Value';
-    }
   }
 }
