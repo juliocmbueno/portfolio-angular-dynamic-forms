@@ -26,7 +26,7 @@ describe('DynamicFormCreateElementConfigComponent', () => {
     expect(component.types.length).toBeGreaterThan(0);
   });
 
-  it('should edit next element if exists after onDeleteButtonTab', () => {
+  it('should edit next element if exists after goToNextElement', () => {
     spyOn(component.editNext, 'emit');
     component.form = new DynamicForm('DynamicFormCreateElementConfigComponent');
 
@@ -37,12 +37,12 @@ describe('DynamicFormCreateElementConfigComponent', () => {
     const nextElement = new DynamicFormElement('Next', DynamicFormTypes.TEXT);
     component.form.addElement(nextElement);
 
-    component.onDeleteButtonTab(new Event(''));
+    component.goToNextElement(new Event(''));
 
     expect(component.editNext.emit).toHaveBeenCalledWith(nextElement);
   });
 
-  it('should create new element if next element not exists after execute onDeleteButtonTab', () => {
+  it('should create new element if next element not exists after execute goToNextElement', () => {
     spyOn(component.editNext, 'emit');
 
     component.form = new DynamicForm('DynamicFormCreateElementConfigComponent');
@@ -51,7 +51,7 @@ describe('DynamicFormCreateElementConfigComponent', () => {
     component.form.addElement(previousElement);
     component.element = previousElement;
 
-    component.onDeleteButtonTab(new Event(''));
+    component.goToNextElement(new Event(''));
 
     expect(component.form.elements.length).toEqual(2);
 
@@ -84,5 +84,25 @@ describe('DynamicFormCreateElementConfigComponent', () => {
     component.onTypeChange(typeText);
 
     expect(typeText.sanitizeElement).toHaveBeenCalledWith(element);
+  });
+
+  it('should focus next element', () => {
+    component.element = new DynamicFormElement('', DynamicFormTypes.TEXT);
+
+    spyOn(document, "querySelector");
+
+    component.focusNext('next-element');
+
+    expect(document.querySelector).toHaveBeenCalledWith('next-element');
+  });
+
+  it('should execute goToNextElement when the next element to focus is element-required, but the element now show required', () => {
+    component.element = new DynamicFormElement('', DynamicFormTypes.SESSION)
+
+    spyOn(component, 'goToNextElement');
+
+    component.focusNext('#element-required-');
+
+    expect(component.goToNextElement).toHaveBeenCalledTimes(1);
   });
 });

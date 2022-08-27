@@ -6,16 +6,26 @@
   [class.show]="visible">
 
   <div class="config-title col-12 col-md-auto pb-1 pb-md-0">
-    <input type="text" class="form-control" id="{{'config-element-title-'+element.elementId.value}}" placeholder="Element Title" [(ngModel)]="element.label">
+    <input
+      type="text"
+      class="form-control"
+      id="{{'config-element-title-'+element.elementId.value}}"
+      placeholder="Element Title"
+      (keyup.enter)="focusNext('#config-element-type-'+element.elementId.value)"
+      [(ngModel)]="element.label">
   </div>
 
   <div class="config-type col-12 col-md-5 col-lg-4 pb-1 pb-md-0">
     <p-dropdown
+      #dropdown
+      inputId="{{'config-element-type-'+element.elementId.value}}"
       [options]="types"
       [style]="{minWidth: '200px'}"
       [(ngModel)]="element.type"
       [group]="true"
       (onChange)="onTypeChange($event.value)"
+      (keydown.enter)="dropdown.hide()"
+      (keyup.enter)="focusNext('#element-required-'+element.elementId.value)"
       placeholder="Select a Country">
       <ng-template pTemplate="selectedItem">
         <div class="row">
@@ -35,11 +45,20 @@
   <div class="config-required col-12 col-md-auto pb-1 pb-md-0 text-end" [class.hidden]="!element.type.showRequired">
     <div class="d-flex align-items-center justify-content-end">
       <label for="{{'element-required-'+element.elementId.value}}" class="me-2">Required</label>
-      <p-inputSwitch styleClass="light" inputId="{{'element-required-'+element.elementId.value}}" [(ngModel)]="element.required"></p-inputSwitch>
+      <p-inputSwitch
+        styleClass="light"
+        inputId="{{'element-required-'+element.elementId.value}}"
+        (keyup.enter)="goToNextElement($event)"
+        [(ngModel)]="element.required"></p-inputSwitch>
     </div>
   </div>
 
   <div class="config-remove col-12 col-md-auto pb-1 pb-md-0 text-end">
-    <button class="btn" pTooltip="Remove" tooltipPosition="top" (keydown.tab)="onDeleteButtonTab($event)" (click)="remove()"><i class="fa-solid fa-trash-can"></i></button>
+    <button
+      class="btn"
+      pTooltip="Remove"
+      tooltipPosition="top"
+      (keydown.tab)="goToNextElement($event)"
+      (click)="remove()"><i class="fa-solid fa-trash-can"></i></button>
   </div>
 </div>

@@ -1,7 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {DynamicFormElement, DynamicFormElementType, DynamicFormTypes} from "@dynamic-forms/domain/dynamic-form-element";
 import {DynamicForm} from "@dynamic-forms/domain/dynamic-form";
-import {MultiSelectItem} from "primeng/multiselect";
 import {SelectItemGroup} from "primeng/api";
 
 @Component({
@@ -51,7 +50,7 @@ export class DynamicFormCreateElementConfigComponent implements OnInit {
     ];
   }
 
-  public onDeleteButtonTab(event: Event):void{
+  public goToNextElement(event: Event):void{
     event.preventDefault();
 
     const nextElement = this.form.nextElementOf(this.element);
@@ -65,7 +64,6 @@ export class DynamicFormCreateElementConfigComponent implements OnInit {
   }
 
   private addNewElement():void{
-    MultiSelectItem
     const element = new DynamicFormElement('', DynamicFormTypes.TEXT);
     this.form.addElement(element);
     this.editNext.emit(element);
@@ -79,5 +77,13 @@ export class DynamicFormCreateElementConfigComponent implements OnInit {
 
   public onTypeChange(type: DynamicFormElementType):void{
     type.sanitizeElement(this.element);
+  }
+
+  public focusNext(querySelector:string):void{
+    document.querySelector<HTMLElement>(querySelector)?.focus();
+
+    if(!this.element.type.showRequired && querySelector.startsWith("#element-required-")){
+      this.goToNextElement(new Event(''));
+    }
   }
 }
