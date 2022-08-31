@@ -1,10 +1,18 @@
-<div class="container-element">
+<div
+  class="container-element"
+  cdkDropList
+  (cdkDropListDropped)="drop($event.previousIndex, $event.currentIndex)">
   <div
     class="element"
     [ngClass]="{'editable shadow-sm': editableElement === element}"
+    [class.cdk-drag-animating]="dragOnGoing"
     (click)="edit(element)"
     (keyup.delete)="remove(element)"
-    *ngFor="let element of form.elements">
+    *ngFor="let element of form.elements"
+    cdkDragLockAxis="y"
+    cdkDrag
+    (cdkDragStarted)="setDragOnGoing(true)"
+    (cdkDragReleased)="setDragOnGoing(false)">
 
     <app-dynamic-form-create-element-config
       [form]="form"

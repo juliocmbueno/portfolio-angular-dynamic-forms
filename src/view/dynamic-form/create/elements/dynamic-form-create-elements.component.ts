@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {DynamicFormElement, DynamicFormElementTypeValue} from "@dynamic-forms/domain/dynamic-form-element";
 import {DynamicForm} from "@dynamic-forms/domain/dynamic-form";
+import {moveItemInArray} from "@angular/cdk/drag-drop";
 
 @Component({
   selector: 'app-dynamic-form-create-elements',
@@ -19,6 +20,8 @@ export class DynamicFormCreateElementsComponent {
   readonly typeCheckbox: DynamicFormElementTypeValue = 'CHECKBOX';
   readonly typeSession: DynamicFormElementTypeValue = 'SESSION';
 
+  dragOnGoing: boolean = false;
+
   constructor() {}
 
   public edit(element: DynamicFormElement): void{
@@ -35,5 +38,13 @@ export class DynamicFormCreateElementsComponent {
     const closer = this.form.nextElementOf(element) || this.form.previousElementOf(element);
     this.edit(closer);
     this.form.removeElement(element);
+  }
+
+  public drop(previousIndex:number, currentIndex:number) {
+    moveItemInArray(this.form.elements, previousIndex, currentIndex);
+  }
+
+  public setDragOnGoing(valor:boolean):void{
+    this.dragOnGoing = valor;
   }
 }

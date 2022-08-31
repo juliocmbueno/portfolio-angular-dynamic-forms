@@ -19,6 +19,7 @@ describe('DynamicFormCreateElementsComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+    expect(component.dragOnGoing).toBeFalse();
   });
 
   it('should edit element', () => {
@@ -59,5 +60,24 @@ describe('DynamicFormCreateElementsComponent', () => {
     component.remove(nextElement);
 
     expect(component.editableElement).toBe(previousElement);
+  });
+
+  it('should set dragOnGoing value', () => {
+    component.setDragOnGoing(true);
+
+    expect(component.dragOnGoing).toBeTrue();
+  });
+
+  it('should move elements in form after drop', () => {
+    const previousElement = new DynamicFormElement('Previous', DynamicFormTypes.TEXT);
+    const nextElement = new DynamicFormElement('Next', DynamicFormTypes.TEXT);
+
+    component.form.addElement(previousElement);
+    component.form.addElement(nextElement);
+
+    component.drop(0, 1);
+
+    expect(component.form.elements[0]).toBe(nextElement);
+    expect(component.form.elements[1]).toBe(previousElement);
   });
 });
