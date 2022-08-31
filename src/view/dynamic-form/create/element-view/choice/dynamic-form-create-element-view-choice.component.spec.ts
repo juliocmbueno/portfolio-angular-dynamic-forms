@@ -5,6 +5,7 @@ import {DynamicFormElement, DynamicFormTypes} from "@dynamic-forms/domain/dynami
 import {InputTextEditableOnClickComponent} from "@dynamic-forms/components/input-text-editable-on-click/input-text-editable-on-click.component";
 import {QueryList} from "@angular/core";
 import {FormBuilder} from "@angular/forms";
+import {DynamicFormElementOption} from "@dynamic-forms/domain/dynamic-form-element-option";
 
 describe('DynamicFormCreateElementViewRadioComponent', () => {
   let component: DynamicFormCreateElementViewChoiceComponent;
@@ -197,5 +198,24 @@ describe('DynamicFormCreateElementViewRadioComponent', () => {
     component.onInputValue(option_1.value, option_2);
 
     expect(component.exceptions[option_2.elementId.value]).toEqual('Duplicated Value')
+  });
+
+  it('should set dragOnGoing value', () => {
+    component.setDragOnGoing(true);
+
+    expect(component.dragOnGoing).toBeTrue();
+  });
+
+  it('should move option in element after drop', () => {
+    const previousElement = new DynamicFormElementOption('Previous');
+    const nextElement = new DynamicFormElementOption('Next');
+
+    component.element.addOption(previousElement);
+    component.element.addOption(nextElement);
+
+    component.drop(0, 1);
+
+    expect(component.element.options[0]).toBe(nextElement);
+    expect(component.element.options[1]).toBe(previousElement);
   });
 });

@@ -1,42 +1,59 @@
 <div class="container-element-option">
   <label class="form-label">{{element.label ? element.label : 'New Element'}}<span class="required-mark" *ngIf="element.required">*</span></label>
 
-  <div class="row element-option align-items-center" *ngFor="let option of element.options">
-    <div class="col-auto align-self-center pe-0">
-      <input
-        class="form-check-input opacity-100"
-        [type]="type"
-        [name]="'choice-'+element.elementId.value"
-        [value]="option.value"
-        [id]="option.elementId.value"
-        [disabled]="true">
-    </div>
-    <div class="col pe-0">
-      <app-input-text-editable-on-click
-        #inputTextEditableOnClick
-        [inputId]="'form-check-'+option.elementId.value"
-        [value]="option.value"
-        (keyup.arrowUp)="editPrevious(option)"
-        (keyup.arrowDown)="editNext(option)"
-        (keyup.enter)="editNext(option)"
-        (keyup.delete)="deleteOptionIfEmpty($event, option)"
-        (keyup.backspace)="deleteOptionIfEmpty($event, option)"
-        [inputStyle]="{'line-height': 'inherit'}"
-        (onInput)="onInputValue($event, option)"
-        (valueChange)="updateOption(option, $event)"></app-input-text-editable-on-click>
-    </div>
-    <div class="col-auto pe-0 container-error-message" *ngIf="exceptions[option.elementId.value]">
-      <i class="fa-solid fa-triangle-exclamation text-danger error-message" [pTooltip]="exceptions[option.elementId.value]"></i>
-    </div>
-    <div class="col-auto" *ngIf="editable">
-      <button
-        class="btn remove"
-        pTooltip="Remove"
-        tooltipPosition="top"
-        (click)="remove(option)"
-        (keydown.tab)="onRemoveBtnTagKeyDown($event, option)"><i class="fa-solid fa-xmark"></i></button>
+  <div
+    cdkDropList
+    class="row cdk-drop-list-container"
+    [cdkDropListDisabled]="!editable"
+    (cdkDropListDropped)="drop($event.previousIndex, $event.currentIndex)">
+    <div class="col cdk-drop-list-boundary">
+      <div
+        cdkDrag
+        cdkDragLockAxis="y"
+        cdkDragBoundary=".cdk-drop-list-boundary"
+        class="row element-option align-items-center"
+        [class.cdk-drag-animating]="dragOnGoing"
+        (cdkDragStarted)="setDragOnGoing(true)"
+        (cdkDragReleased)="setDragOnGoing(false)"
+        *ngFor="let option of element.options">
+        <div class="col-auto align-self-center pe-0">
+          <input
+            class="form-check-input opacity-100"
+            [type]="type"
+            [name]="'choice-'+element.elementId.value"
+            [value]="option.value"
+            [id]="option.elementId.value"
+            [disabled]="true">
+        </div>
+        <div class="col pe-0">
+          <app-input-text-editable-on-click
+            #inputTextEditableOnClick
+            [inputId]="'form-check-'+option.elementId.value"
+            [value]="option.value"
+            (keyup.arrowUp)="editPrevious(option)"
+            (keyup.arrowDown)="editNext(option)"
+            (keyup.enter)="editNext(option)"
+            (keyup.delete)="deleteOptionIfEmpty($event, option)"
+            (keyup.backspace)="deleteOptionIfEmpty($event, option)"
+            [inputStyle]="{'line-height': 'inherit'}"
+            (onInput)="onInputValue($event, option)"
+            (valueChange)="updateOption(option, $event)"></app-input-text-editable-on-click>
+        </div>
+        <div class="col-auto pe-0 container-error-message" *ngIf="exceptions[option.elementId.value]">
+          <i class="fa-solid fa-triangle-exclamation text-danger error-message" [pTooltip]="exceptions[option.elementId.value]"></i>
+        </div>
+        <div class="col-auto" *ngIf="editable">
+          <button
+            class="btn remove"
+            pTooltip="Remove"
+            tooltipPosition="top"
+            (click)="remove(option)"
+            (keydown.tab)="onRemoveBtnTagKeyDown($event, option)"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
     </div>
   </div>
+
   <div class="row element-option align-items-center" *ngIf="editable">
     <div class="col-auto align-self-center pe-0">
       <input

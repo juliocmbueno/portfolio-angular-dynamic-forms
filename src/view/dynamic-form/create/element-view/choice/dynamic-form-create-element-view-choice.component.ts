@@ -2,6 +2,7 @@ import {Component, Input, OnInit, QueryList, ViewChildren} from '@angular/core';
 import {DynamicFormElement} from "@dynamic-forms/domain/dynamic-form-element";
 import {InputTextEditableOnClickComponent} from "@dynamic-forms/components/input-text-editable-on-click/input-text-editable-on-click.component";
 import {DynamicFormElementOption} from "@dynamic-forms/domain/dynamic-form-element-option";
+import {moveItemInArray} from "@angular/cdk/drag-drop";
 
 @Component({
   selector: 'app-dynamic-form-create-element-view-choice',
@@ -18,6 +19,7 @@ export class DynamicFormCreateElementViewChoiceComponent implements OnInit{
 
   exceptions: {[key:string]: string} = {};
   nameAux!:number;
+  dragOnGoing: boolean = false;
 
   ngOnInit() {
     this.initNameAux();
@@ -126,5 +128,13 @@ export class DynamicFormCreateElementViewChoiceComponent implements OnInit{
       .filter(optionTemp => optionTemp != option)
       .map(optionTemp => optionTemp.value)
       .some(valueTemp => valueTemp?.toLocaleLowerCase() === value?.toLowerCase());
+  }
+
+  public drop(previousIndex:number, currentIndex:number):void{
+    moveItemInArray(this.element.options, previousIndex, currentIndex);
+  }
+
+  public setDragOnGoing(valor:boolean):void{
+    this.dragOnGoing = valor;
   }
 }
