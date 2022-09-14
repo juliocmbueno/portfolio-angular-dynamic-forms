@@ -82,7 +82,7 @@ describe('DynamicFormTypes', () => {
   it('should be TEXT', function () {
     const dynamicFormElementType:DynamicFormElementType = DynamicFormTypes.TEXT;
 
-    expect(dynamicFormElementType.label).toEqual('Short Text');
+    expect(dynamicFormElementType.label).toEqual('dynamicFormType.text');
     expect(dynamicFormElementType.elementType).toEqual('TEXT');
     expect(dynamicFormElementType.icon).toEqual('fa-solid fa-grip-lines')
     expect(dynamicFormElementType.showRequired).toBeTrue();
@@ -102,7 +102,7 @@ describe('DynamicFormTypes', () => {
   it('should be TEXTAREA', function () {
     const dynamicFormElementType:DynamicFormElementType = DynamicFormTypes.TEXTAREA;
 
-    expect(dynamicFormElementType.label).toEqual('Long Text');
+    expect(dynamicFormElementType.label).toEqual('dynamicFormType.textarea');
     expect(dynamicFormElementType.elementType).toEqual('TEXTAREA');
     expect(dynamicFormElementType.icon).toEqual('fa-solid fa-align-left');
     expect(dynamicFormElementType.showRequired).toBeTrue();
@@ -122,7 +122,7 @@ describe('DynamicFormTypes', () => {
   it('should be RADIO', function () {
     const dynamicFormElementType:DynamicFormElementType = DynamicFormTypes.RADIO;
 
-    expect(dynamicFormElementType.label).toEqual('Single Choice');
+    expect(dynamicFormElementType.label).toEqual('dynamicFormType.radio');
     expect(dynamicFormElementType.elementType).toEqual('RADIO');
     expect(dynamicFormElementType.icon).toEqual('fa-solid fa-circle-dot');
     expect(dynamicFormElementType.showRequired).toBeTrue();
@@ -146,7 +146,7 @@ describe('DynamicFormTypes', () => {
   it('should be CHECKBOX', function () {
     const dynamicFormElementType:DynamicFormElementType = DynamicFormTypes.CHECKBOX;
 
-    expect(dynamicFormElementType.label).toEqual('Multiple Choice');
+    expect(dynamicFormElementType.label).toEqual('dynamicFormType.checkbox');
     expect(dynamicFormElementType.elementType).toEqual('CHECKBOX');
     expect(dynamicFormElementType.icon).toEqual('fa-solid fa-square-check');
     expect(dynamicFormElementType.showRequired).toBeTrue();
@@ -170,7 +170,7 @@ describe('DynamicFormTypes', () => {
   it('should be SESSION', function () {
     const dynamicFormElementType:DynamicFormElementType = DynamicFormTypes.SESSION;
 
-    expect(dynamicFormElementType.label).toEqual('Session');
+    expect(dynamicFormElementType.label).toEqual('dynamicFormType.session');
     expect(dynamicFormElementType.elementType).toEqual('SESSION');
     expect(dynamicFormElementType.icon).toEqual('fa-solid fa-minus');
     expect(dynamicFormElementType.showRequired).toBeFalse();

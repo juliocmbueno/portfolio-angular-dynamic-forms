@@ -8,7 +8,8 @@
       "@dynamic-forms/domain/*": ["domain/*"],
       "@dynamic-forms/app/*": ["app/*"],
       "@dynamic-forms/view/*": ["view/*"],
-      "@dynamic-forms/components/*": ["components/*"]
+      "@dynamic-forms/components/*": ["components/*"],
+      "@dynamic-forms/i18n/*": ["i18n/*"]
     },
     "forceConsistentCasingInFileNames": true,
     "strict": true,

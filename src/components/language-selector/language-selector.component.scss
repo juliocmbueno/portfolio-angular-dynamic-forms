@@ -1,0 +1,13 @@
+
+@import "src/assets/scss/variables";
+@import "src/assets/scss/mixins/breakpoints";
+
+.p-dropdown.language-selector .p-dropdown-panel{
+  min-width: 170px;
+}
+
+@include media-breakpoint-up($md){
+  .p-dropdown.language-selector .p-dropdown-panel{
+    left: -75px !important;
+  }
+}

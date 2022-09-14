@@ -56,7 +56,7 @@ export interface DynamicFormElementType {
 
 export const DynamicFormTypes: { [TYPE in DynamicFormElementTypeValue]: DynamicFormElementType; } = {
   'TEXT': {
-    label: 'Short Text',
+    label: 'dynamicFormType.text',
     elementType: 'TEXT',
     icon: 'fa-solid fa-grip-lines',
     showRequired: true,
@@ -65,7 +65,7 @@ export const DynamicFormTypes: { [TYPE in DynamicFormElementTypeValue]: DynamicF
     }
   },
   'TEXTAREA': {
-    label: 'Long Text',
+    label: 'dynamicFormType.textarea',
     elementType: 'TEXTAREA',
     icon: 'fa-solid fa-align-left',
     showRequired: true,
@@ -74,21 +74,21 @@ export const DynamicFormTypes: { [TYPE in DynamicFormElementTypeValue]: DynamicF
     }
   },
   'RADIO': {
-    label: 'Single Choice',
+    label: 'dynamicFormType.radio',
     elementType: 'RADIO',
     icon: 'fa-solid fa-circle-dot',
     showRequired: true,
     sanitizeElement(element: DynamicFormElement) {}
   },
   'CHECKBOX': {
-    label: 'Multiple Choice',
+    label: 'dynamicFormType.checkbox',
     elementType: 'CHECKBOX',
     icon: 'fa-solid fa-square-check',
     showRequired: true,
     sanitizeElement(element: DynamicFormElement) {}
   },
   'SESSION': {
-    label: 'Session',
+    label: 'dynamicFormType.session',
     elementType: 'SESSION',
     icon: 'fa-solid fa-minus',
     showRequired: false,

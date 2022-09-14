@@ -6,7 +6,7 @@ export class DynamicForm {
   description: string | undefined;
   elements: DynamicFormElement[] = [];
 
-  constructor(title: string){
+  constructor(title?: string){
     this.title = title;
   }
 

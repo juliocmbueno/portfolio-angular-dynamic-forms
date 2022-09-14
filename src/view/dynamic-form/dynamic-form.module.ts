@@ -19,6 +19,7 @@ import {InputTextEditableOnClickModule} from "@dynamic-forms/components/input-te
 import {InputTextareaEditableOnClickModule} from "@dynamic-forms/components/input-textarea-editable-on-click/input-textarea-editable-on-click.module";
 import {DynamicFormCreateElementViewSessionComponent} from './create/element-view/session/dynamic-form-create-element-view-session.component';
 import {DragDropModule} from "@angular/cdk/drag-drop";
+import {TranslocoModule} from "@ngneat/transloco";
 
 @NgModule({
   declarations: [
@@ -33,18 +34,19 @@ import {DragDropModule} from "@angular/cdk/drag-drop";
     DynamicFormCreateElementViewSessionComponent
   ],
     imports: [
-        CommonModule,
-        DynamicFormRoutingModule,
-        ReactiveFormsModule,
-        DividerModule,
-        DropdownModule,
-        FormsModule,
-        InplaceModule,
-        TooltipModule,
-        InputSwitchModule,
-        InputTextEditableOnClickModule,
-        InputTextareaEditableOnClickModule,
-        DragDropModule
+      CommonModule,
+      DynamicFormRoutingModule,
+      ReactiveFormsModule,
+      TranslocoModule,
+      DividerModule,
+      DropdownModule,
+      FormsModule,
+      InplaceModule,
+      TooltipModule,
+      InputSwitchModule,
+      InputTextEditableOnClickModule,
+      InputTextareaEditableOnClickModule,
+      DragDropModule
     ]
 })
 export class DynamicFormModule { }

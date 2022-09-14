@@ -3,14 +3,14 @@
   class="config-container row justify-content-end align-items-center jb-bg-primary"
   [class]="element.type.elementType"
   [class.hide]="!visible"
-  [class.show]="visible">
+  [class.show]="visible" *transloco="let translate">
 
   <div class="config-title col-12 col-md-auto pb-1 pb-md-0">
     <input
       type="text"
       class="form-control"
       id="{{'config-element-title-'+element.elementId.value}}"
-      placeholder="Element Title"
+      placeholder="{{translate('dynamicForm.elementTitle')}}"
       (keyup.enter)="focusNext('#config-element-type-'+element.elementId.value)"
       [(ngModel)]="element.label">
   </div>
@@ -25,18 +25,22 @@
       [group]="true"
       (onChange)="onTypeChange($event.value)"
       (keydown.enter)="dropdown.hide()"
-      (keyup.enter)="focusNext('#element-required-'+element.elementId.value)"
-      placeholder="Select a Country">
+      (keyup.enter)="focusNext('#element-required-'+element.elementId.value)">
+      <ng-template let-group pTemplate="group">
+        <div class="flex align-items-center">
+          <span>{{translate(group.label)}}</span>
+        </div>
+      </ng-template>
       <ng-template pTemplate="selectedItem">
         <div class="row">
           <div class="col-auto"><i [className]="element.type.icon"></i></div>
-          <div class="col-auto">{{element.type.label}}</div>
+          <div class="col-auto">{{translate(element.type.label)}}</div>
         </div>
       </ng-template>
       <ng-template let-type pTemplate="item">
         <div class="row">
           <div class="col-auto"><i [className]="type.value.icon"></i></div>
-          <div class="col-auto">{{type.value.label}}</div>
+          <div class="col-auto">{{translate(type.label)}}</div>
         </div>
       </ng-template>
     </p-dropdown>
@@ -44,7 +48,7 @@
 
   <div class="config-required col-12 col-md-auto pb-1 pb-md-0 text-end" [class.hidden]="!element.type.showRequired">
     <div class="d-flex align-items-center justify-content-end">
-      <label for="{{'element-required-'+element.elementId.value}}" class="me-2">Required</label>
+      <label for="{{'element-required-'+element.elementId.value}}" class="me-2">{{translate('general.Required')}}</label>
       <p-inputSwitch
         styleClass="light"
         inputId="{{'element-required-'+element.elementId.value}}"
@@ -56,7 +60,7 @@
   <div class="config-remove col-12 col-md-auto pb-1 pb-md-0 text-end">
     <button
       class="btn"
-      pTooltip="Remove"
+      pTooltip="{{translate('general.Remove')}}"
       tooltipPosition="top"
       (keydown.tab)="goToNextElement($event)"
       (click)="remove()"><i class="fa-solid fa-trash-can"></i></button>

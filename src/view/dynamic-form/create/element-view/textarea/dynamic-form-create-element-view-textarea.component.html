@@ -1,7 +1,10 @@
 
-<label class="form-label">{{element.label ? element.label : 'New Element'}}<span class="required-mark" *ngIf="element.required">*</span></label>
-<textarea
-  class="form-control resize-none"
-  value="{{element.type.label}}"
-  [rows]="3"
-  [disabled]="true"></textarea>
+<ng-container *transloco="let translate">
+  <label class="form-label">{{element.label ? element.label : translate('dynamicForm.newElement')}}<span class="required-mark" *ngIf="element.required">*</span></label>
+  <textarea
+    class="form-control resize-none"
+    value="{{translate(element.type.label)}}"
+    [rows]="3"
+    [disabled]="true"></textarea>
+</ng-container>
+

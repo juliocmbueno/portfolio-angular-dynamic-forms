@@ -3,6 +3,7 @@ import {DynamicFormElement} from "@dynamic-forms/domain/dynamic-form-element";
 import {InputTextEditableOnClickComponent} from "@dynamic-forms/components/input-text-editable-on-click/input-text-editable-on-click.component";
 import {DynamicFormElementOption} from "@dynamic-forms/domain/dynamic-form-element-option";
 import {moveItemInArray} from "@angular/cdk/drag-drop";
+import {TranslocoService} from "@ngneat/transloco";
 
 @Component({
   selector: 'app-dynamic-form-create-element-view-choice',
@@ -21,6 +22,9 @@ export class DynamicFormCreateElementViewChoiceComponent implements OnInit{
   nameAux!:number;
   dragOnGoing: boolean = false;
 
+  constructor(private translocoService:TranslocoService) {
+  }
+
   ngOnInit() {
     this.initNameAux();
   }
@@ -36,10 +40,11 @@ export class DynamicFormCreateElementViewChoiceComponent implements OnInit{
   }
 
   private getNewOptionName():string{
-    let newOptionName = `New Option ${this.nameAux++}`;
+    const initialLabel = this.translocoService.translate('dynamicForm.newOption');
+    let newOptionName = `${initialLabel} ${this.nameAux++}`;
 
     while(this.isDuplicatedValue(newOptionName, null)){
-      newOptionName = `New Option ${this.nameAux++}`;
+      newOptionName = `${initialLabel} ${this.nameAux++}`;
     }
 
     return newOptionName;

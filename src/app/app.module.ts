@@ -4,17 +4,23 @@ import {AppComponent} from '@dynamic-forms/app/app.component';
 import {AppRoutingModule} from '@dynamic-forms/app/app-routing.module';
 import {AppNavComponent} from './app-nav/app-nav.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {TranslocoRootModule} from "@dynamic-forms/i18n/transloco-root.module";
+import {HttpClientModule} from "@angular/common/http";
+import {LanguageSelectorModule} from "@dynamic-forms/components/language-selector/language-selector.module";
 
 @NgModule({
   declarations: [
     AppComponent,
     AppNavComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        HttpClientModule,
+        TranslocoRootModule,
+        LanguageSelectorModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

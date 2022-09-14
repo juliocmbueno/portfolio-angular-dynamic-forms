@@ -1,7 +1,10 @@
 
-<label class="form-label">{{element.label ? element.label : 'New Element'}}<span class="required-mark" *ngIf="element.required">*</span></label>
-<input
-  type="text"
-  class="form-control"
-  value="{{element.type.label}}"
-  [disabled]="true">
+<ng-container *transloco="let translate">
+  <label class="form-label">{{element.label ? element.label : translate('dynamicForm.newElement')}}<span class="required-mark" *ngIf="element.required">*</span></label>
+  <input
+    type="text"
+    class="form-control"
+    value="{{translate(element.type.label)}}"
+    [disabled]="true">
+</ng-container>
+

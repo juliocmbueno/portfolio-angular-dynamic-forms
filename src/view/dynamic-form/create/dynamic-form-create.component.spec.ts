@@ -25,9 +25,7 @@ describe('DynamicFormCreateComponent', () => {
     component.ngOnInit();
 
     const form: DynamicForm = component.form;
-    expect(form.title).toEqual('Click to set title');
-
-    expect(form.description).toEqual('Short description');
+    expect(form).toBeTruthy();
     expect(form.elements.length).toEqual(0);
   });
 

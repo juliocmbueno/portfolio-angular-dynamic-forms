@@ -1,0 +1,40 @@
+{
+  "title": "Formulário Dinâmico",
+  "nav": {
+    "home": "Início",
+    "create": "Criar"
+  },
+  "index": {
+    "usedTechnologies": "Tecnologias Usadas",
+    "seeMore": "Veja mais",
+    "angularDescription": "É uma estrutura de design de aplicativos e plataforma de desenvolvimento para criar aplicativos de página única eficientes e sofisticados.",
+    "primeNGDescription": "Mais de 80 componentes de interface para angular com qualidade de alto nível para ajudá-lo a implementar todos os seus requisitos de interface com estilo.",
+    "typeScriptDescription": "É uma linguagem de programação fortemente tipada que se baseia em JavaScript, oferecendo melhores ferramentas em qualquer escala.",
+    "BootstrapDescription": "Kit de ferramentas de front-end poderoso, extensível e repleto de recursos. Crie e personalize com Sass, utilize sistemas e componentes de grade pré-construídos e dê vida a projetos com poderosos plugins JavaScript.",
+    "sassDescription": "É a linguagem de extensão CSS de nível profissional mais madura, estável e poderosa do mundo."
+  },
+  "dynamicForm": {
+    "clickToSetTitle": "Clique para definir o título",
+    "shortDescription": "Breve Descrição",
+    "elementTitle": "Título do Elemento",
+    "newElement": "Novo Elemento",
+    "addNewOption": "Adicionar nova opção",
+    "newOption": "Nova Opção",
+    "newSession": "Nova Sessão",
+    "addElement": "Adicionar Elemento"
+  },
+  "dynamicFormType": {
+    "text": "Texto Curto",
+    "textarea": "Texto Longo",
+    "radio": "Escolha Única",
+    "checkbox": "Multipla Escolha",
+    "session": "Sessão"
+  },
+  "general": {
+    "Required": "Obrigatório",
+    "Text": "Texto",
+    "Choice": "Escolha",
+    "Other": "Outro",
+    "Remove": "Remover"
+  }
+}

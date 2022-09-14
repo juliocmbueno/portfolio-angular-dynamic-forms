@@ -28,21 +28,21 @@ export class DynamicFormCreateElementConfigComponent implements OnInit {
   private initTypes(): void{
     this.types = [
       {
-        label: 'Text',
+        label: 'general.Text',
         items: [
           {label: DynamicFormTypes.TEXT.label, value: DynamicFormTypes.TEXT},
           {label: DynamicFormTypes.TEXTAREA.label, value: DynamicFormTypes.TEXTAREA}
         ]
       },
       {
-        label: 'Choice',
+        label: 'general.Choice',
         items: [
           {label: DynamicFormTypes.CHECKBOX.label, value: DynamicFormTypes.CHECKBOX},
           {label: DynamicFormTypes.RADIO.label, value: DynamicFormTypes.RADIO}
         ]
       },
       {
-        label: 'Other',
+        label: 'general.Other',
         items: [
           {label: DynamicFormTypes.SESSION.label, value: DynamicFormTypes.SESSION}
         ]

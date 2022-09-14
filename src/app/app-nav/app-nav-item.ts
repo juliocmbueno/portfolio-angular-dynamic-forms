@@ -1,11 +1,11 @@
 
 export const AppNavItems: {[key: string] : AppNavItem} = {
   HOME: {
-    label: 'Home',
+    label: 'nav.home',
     routerLink: '/'
   },
   CREATE: {
-    label: 'Create',
+    label: 'nav.create',
     routerLink: '/dynamic-form'
   }
 };

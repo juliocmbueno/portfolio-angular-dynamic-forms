@@ -6,6 +6,7 @@ import {InputTextEditableOnClickComponent} from "@dynamic-forms/components/input
 import {QueryList} from "@angular/core";
 import {FormBuilder} from "@angular/forms";
 import {DynamicFormElementOption} from "@dynamic-forms/domain/dynamic-form-element-option";
+import {TranslocoModule, TranslocoService} from "@ngneat/transloco";
 
 describe('DynamicFormCreateElementViewRadioComponent', () => {
   let component: DynamicFormCreateElementViewChoiceComponent;
@@ -13,6 +14,8 @@ describe('DynamicFormCreateElementViewRadioComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [TranslocoModule],
+      providers: [TranslocoService],
       declarations: [ DynamicFormCreateElementViewChoiceComponent]
     }).compileComponents();
 
@@ -53,7 +56,7 @@ describe('DynamicFormCreateElementViewRadioComponent', () => {
     component.addOption();
 
     const option = component.element.options[2];
-    expect(option.value).toEqual('New Option 3');
+    expect(option.value).toEqual('en.dynamicForm.newOption 3');
     expect(component.nameAux).toEqual(4);
   });
 
@@ -76,7 +79,7 @@ describe('DynamicFormCreateElementViewRadioComponent', () => {
 
     component.updateOption(option, '');
 
-    const newValue = `New Option ${component.nameAux - 1}`;
+    const newValue = `en.dynamicForm.newOption ${component.nameAux - 1}`;
     expect(option.value).toEqual(newValue);
     expect(inputEditable.getControlValue()).toEqual(newValue);
   });

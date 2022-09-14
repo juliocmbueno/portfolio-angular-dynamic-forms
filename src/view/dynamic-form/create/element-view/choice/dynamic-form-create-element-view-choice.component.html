@@ -1,5 +1,5 @@
-<div class="container-element-option">
-  <label class="form-label">{{element.label ? element.label : 'New Element'}}<span class="required-mark" *ngIf="element.required">*</span></label>
+<div class="container-element-option" *transloco="let translate">
+  <label class="form-label">{{element.label ? element.label : translate('dynamicForm.newElement')}}<span class="required-mark" *ngIf="element.required">*</span></label>
 
   <div
     cdkDropList
@@ -45,7 +45,7 @@
         <div class="col-auto" *ngIf="editable">
           <button
             class="btn remove"
-            pTooltip="Remove"
+            pTooltip="{{translate('general.Remove')}}"
             tooltipPosition="top"
             (click)="remove(option)"
             (keydown.tab)="onRemoveBtnTagKeyDown($event, option)"><i class="fa-solid fa-xmark"></i></button>
@@ -63,7 +63,7 @@
         [disabled]="true">
     </div>
     <div class="col pe-0" (click)="addOption()">
-      Add new option
+      {{translate('dynamicForm.addNewOption')}}
     </div>
   </div>
 </div>

@@ -1,4 +1,4 @@
-<div class="py-5">
+<div class="py-5" *transloco="let translate">
   <app-dynamic-form-create-title [form]="form"></app-dynamic-form-create-title>
   <app-dynamic-form-create-description [form]="form"></app-dynamic-form-create-description>
 
@@ -10,7 +10,7 @@
 
   <div class="row justify-content-center container-btn-add-element" [class.has-element]="form.elements.length">
     <div class="col-auto">
-      <button type="button" pTooltip="Add Element" class="circular-icon-button primary" (click)="addNewElement()">
+      <button type="button" pTooltip="{{translate('dynamicForm.addElement')}}" class="circular-icon-button primary" (click)="addNewElement()">
         <i class="fa-solid fa-plus"></i>
       </button>
     </div>

@@ -1,0 +1,40 @@
+{
+  "title": "Dynamic Forms",
+  "nav": {
+    "home": "Home",
+    "create": "Create"
+  },
+  "index": {
+    "usedTechnologies": "Used Technologies",
+    "seeMore": "See more",
+    "angularDescription": "It is an application design framework and development platform for creating efficient and sophisticated single-page apps.",
+    "primeNGDescription": "Over 80 Angular UI Components with top-notch quality to help you implement all your UI requirements in style.",
+    "typeScriptDescription": "It is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale.",
+    "BootstrapDescription": "Powerful, extensible, and feature-packed frontend toolkit. Build and customize with Sass, utilize prebuilt grid system and components, and bring projects to life with powerful JavaScript plugins.",
+    "sassDescription": "It is the most mature, stable, and powerful professional grade CSS extension language in the world."
+  },
+  "dynamicForm": {
+    "clickToSetTitle": "Click to set title",
+    "shortDescription": "Short description",
+    "elementTitle": "Element Title",
+    "newElement": "New Element",
+    "addNewOption": "Add new option",
+    "newOption": "New Option",
+    "newSession": "New Session",
+    "addElement": "Add Element"
+  },
+  "dynamicFormType": {
+    "text": "Short Text",
+    "textarea": "Long Text",
+    "radio": "Single Choice",
+    "checkbox": "Multiple Choice",
+    "session": "Session"
+  },
+  "general": {
+    "Required": "Required",
+    "Text": "Text",
+    "Choice": "Choice",
+    "Other": "Other",
+    "Remove": "Remove"
+  }
+}
