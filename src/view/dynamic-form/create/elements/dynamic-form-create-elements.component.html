@@ -5,11 +5,13 @@
   <div
     cdkDrag
     cdkDragLockAxis="y"
+    cdkDragBoundary=".container-element"
     class="element"
     [ngClass]="{'editable shadow-sm': editableElement === element}"
     [class.cdk-drag-animating]="dragOnGoing"
     (click)="edit(element)"
     (keyup.delete)="remove(element)"
+    [cdkDragDisabled]="editableElement === element"
     (cdkDragStarted)="setDragOnGoing(true)"
     (cdkDragReleased)="setDragOnGoing(false)"
     *ngFor="let element of form.elements">

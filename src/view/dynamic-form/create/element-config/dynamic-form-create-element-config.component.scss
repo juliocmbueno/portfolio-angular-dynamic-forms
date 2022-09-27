@@ -37,6 +37,9 @@
   visibility: visible;
   transition: .3s width ease-out, .3s opacity ease-out, .3s padding ease-out;
 }
+.config-container.hide .config-required{
+  visibility: hidden;
+}
 
 .config-required.hidden{
   padding: 0;
