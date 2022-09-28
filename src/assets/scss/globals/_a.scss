@@ -1,8 +1,8 @@
 
 a{
-  color: $jb-primary;
+  color: var(--jb-a-color);
 
   &:hover{
-    color: $jb-primary-hover;
+    color: var(--jb-a-color-hover);
   }
 }

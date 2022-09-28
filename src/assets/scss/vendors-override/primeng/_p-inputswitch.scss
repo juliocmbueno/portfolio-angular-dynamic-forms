@@ -3,18 +3,26 @@ p-inputswitch{
   height: 1.75rem;
 }
 
-.p-inputswitch.p-inputswitch-checked {
-  &.light{
-    .p-inputswitch-slider{
-      background: #FFF;
+.p-inputswitch .p-inputswitch-slider{
+  background-color: var(--jb-p-inputswitch-slider-bg-color);
+}
 
-      &:hover{
-        background: #eeeeee;
-      }
+.p-inputswitch.p-focus .p-inputswitch-slider{
+  box-shadow: var(--jb-input-focus-box-shadow);
+}
 
-      &::before{
-        background: $jb-primary;
-      }
-    }
+.p-inputswitch.p-inputswitch-checked .p-inputswitch-slider{
+  background: var(--jb-p-inputswitch-slider-checked-bg-color);
+
+  &::before{
+    background: var(--jb-p-inputswitch-slider-before-bg-color);
   }
+}
+
+.p-inputswitch.p-inputswitch-checked:not(.p-disabled):hover .p-inputswitch-slider{
+  background: var(--jb-p-inputswitch-slider-hover-bg-color);
+}
+
+.p-inputswitch:not(.p-disabled):hover .p-inputswitch-slider{
+  background: var(--jb-p-inputswitch-slider-hover-bg-color);
 }

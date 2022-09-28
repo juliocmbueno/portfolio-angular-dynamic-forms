@@ -7,6 +7,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {TranslocoRootModule} from "@dynamic-forms/i18n/transloco-root.module";
 import {HttpClientModule} from "@angular/common/http";
 import {LanguageSelectorModule} from "@dynamic-forms/components/language-selector/language-selector.module";
+import {ThemeLightDarkSelectorModule} from "@dynamic-forms/components/theme-light-dark-selector/theme-light-dark-selector.module";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {LanguageSelectorModule} from "@dynamic-forms/components/language-selecto
         AppRoutingModule,
         HttpClientModule,
         TranslocoRootModule,
-        LanguageSelectorModule
+        LanguageSelectorModule,
+        ThemeLightDarkSelectorModule
     ],
   providers: [],
   bootstrap: [AppComponent]

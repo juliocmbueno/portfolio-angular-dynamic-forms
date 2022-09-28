@@ -1,0 +1,33 @@
+
+.container-theme-selector{
+  position: relative;
+  height: 36px;
+  width: 36px;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  border-radius: .3rem;
+  cursor: pointer;
+
+  &:hover{
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.container-theme-selector .theme{
+  position: absolute;
+  opacity: 1;
+  transition: .3s opacity ease;
+
+  &.hidden{
+    opacity: 0;
+  }
+}
+
+.container-theme-selector .theme.light{
+  color: #ffd500;
+}
+
+.container-theme-selector .theme.dark{
+  color: #d7d7d7;
+}

@@ -1,0 +1,17 @@
+
+.form-control{
+  color: var(--jb-color);
+  background-color: var(--jb-input-bg-color);
+  border-color: var(--jb-input-border-color);
+
+  &:focus{
+    color: var(--jb-color);
+    background-color: var(--jb-input-bg-color);
+    box-shadow: var(--jb-input-focus-box-shadow);
+  }
+
+  &:disabled{
+    color: var(--jb-input-disabled-color);
+    background-color: var(--jb-input-disabled-bg-color);
+  }
+}

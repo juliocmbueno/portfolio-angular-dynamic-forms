@@ -1,0 +1,48 @@
+
+:root {
+  --jb-color: #{$jb-color};
+  --jb-body-bg-color: #FFF;
+  --jb-input-bg-color: #FFF;
+  --jb-input-border-color: #ced4da;;
+  --jb-input-disabled-bg-color: #e9ecef;
+  --jb-input-disabled-color: #{$jb-color};
+  --jb-input-focus-box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);;
+  --jb-a-color: #{$jb-primary};
+  --jb-a-color-hover: #{$jb-primary-hover};
+  --jb-element-session-border-bottom: #{$jb-primary};
+  --jb-p-dropdown-item-highlight-bg-color: #EFF6FF;
+  --jb-p-dropdown-item-highlight-color: #{$jb-primary};
+  --jb-p-dropdown-item-hover-bg-color: #e9ecef;
+  --jb-p-dropdown-item-hover-color: #495057;
+  --jb-p-inputswitch-slider-bg-color: #ced4da;
+  --jb-p-inputswitch-slider-before-bg-color: #{$jb-primary};
+  --jb-p-inputswitch-slider-checked-bg-color: #FFF;
+  --jb-p-inputswitch-slider-hover-bg-color: #eeeeee;
+  --jb-bs-btn-color: #212529;
+  --jb-create-element-view-chouce-btn-remove-bg-color: rgba(84, 84, 84, 0.1);
+  --jb-required-mark-color: #{$jb-primary};
+}
+
+body[theme='dark'] {
+  --jb-color: #CCC;
+  --jb-body-bg-color: #2a323d;
+  --jb-input-bg-color: #20262e;
+  --jb-input-border-color: #3f4b5b;
+  --jb-input-disabled-bg-color: #20262e;
+  --jb-input-disabled-color: rgba(255, 255, 255, 0.3);
+  --jb-input-focus-box-shadow: 0 0 0 1px #e3f3fe;;
+  --jb-a-color: #{$jb-primary-light};
+  --jb-a-color-hover: #{$jb-primary-light-hover};
+  --jb-element-session-border-bottom: #CCC;
+  --jb-p-dropdown-item-highlight-bg-color: #{$jb-primary-light};
+  --jb-p-dropdown-item-highlight-color: #151515;
+  --jb-p-dropdown-item-hover-bg-color: rgba(255, 255, 255, 0.04);
+  --jb-p-dropdown-item-hover-color: #CCC;
+  --jb-p-inputswitch-slider-bg-color: #3f4b5b;
+  --jb-p-inputswitch-slider-before-bg-color: #{$jb-primary-light};
+  --jb-p-inputswitch-slider-checked-bg-color: #3f4b5b;
+  --jb-p-inputswitch-slider-hover-bg-color: #3f4b5b;
+  --jb-bs-btn-color: #CCC;
+  --jb-create-element-view-chouce-btn-remove-bg-color: rgba(255, 255, 255, 0.1);
+  --jb-required-mark-color: #{$jb-primary-light};
+}

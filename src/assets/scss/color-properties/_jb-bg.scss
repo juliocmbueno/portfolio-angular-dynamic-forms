@@ -1,4 +1,9 @@
 
 .jb-bg-primary{
   background-color: $jb-primary;
+  transition: .3s background-color ease;
+}
+
+body[theme=dark] .jb-bg-primary{
+  background-color: #242526;
 }
