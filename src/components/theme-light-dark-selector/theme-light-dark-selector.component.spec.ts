@@ -7,6 +7,8 @@ describe('ThemeLightDarkSelectorComponent', () => {
   let fixture: ComponentFixture<ThemeLightDarkSelectorComponent>;
 
   beforeEach(async () => {
+    localStorage.removeItem('selected-theme');
+
     await TestBed.configureTestingModule({
       declarations: [ ThemeLightDarkSelectorComponent ]
     })
@@ -19,5 +21,14 @@ describe('ThemeLightDarkSelectorComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+    expect(component.selectedTheme).toEqual('light');
+  });
+
+  it('should toggle the theme', () => {
+    component.toggleTheme();
+    expect(component.selectedTheme).toEqual('dark');
+
+    component.toggleTheme();
+    expect(component.selectedTheme).toEqual('light');
   });
 });
